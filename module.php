@@ -114,7 +114,7 @@ class fancy_gendex_WT_Module extends WT_Module implements WT_Module_Config {
 	private function config() {
 		$controller=new WT_Controller_Page();
 		$controller
-			->requireAdminLogin()
+			->restrictAccess(\WT\Auth::isAdmin())
 			->setPageTitle($this->getTitle())
 			->pageHeader();
 
