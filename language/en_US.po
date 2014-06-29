@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Fancy Privacy List\n"
-"POT-Creation-Date: 2014-06-29 21:28+0100\n"
-"PO-Revision-Date: 2014-06-29 21:29+0100\n"
+"POT-Creation-Date: 2014-06-29 22:06+0100\n"
+"PO-Revision-Date: 2014-06-29 22:07+0100\n"
 "Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -43,8 +43,8 @@ msgid "The GENDEX file will only contain public data."
 msgstr "The GENDEX file will only contain public data."
 
 #: modules_v3\fancy_gendex/module.php:158
-msgid "To tell search engines that a GENDEX file is available, you should submit the url above to the genealogical search engine of your choice. Currently only <a href=\"http://www.stamboomzoeker.nl\">stamboomzoeker.nl</a> (Dutch) and <a href=\"http://www.familytreeseeker.com\">familytreeseeker.com</a> (English/International) are supported."
-msgstr "To tell search engines that a GENDEX file is available, you should submit the url above to the genealogical search engine of your choice. Currently only <a href=\"http://www.stamboomzoeker.nl\">stamboomzoeker.nl</a> (Dutch) and <a href=\"http://www.familytreeseeker.com\">familytreeseeker.com</a> (English/International) are supported."
+msgid "To tell search engines that a GENDEX file is available, you should submit the url above to the genealogical search engine of your choice. Currently only <a href=\"http://www.stamboomzoeker.nl/?l=nl\" target=\"_blank\">stamboomzoeker.nl</a> (Dutch) and <a href=\"http://www.familytreeseeker.com/?l=en\" target=\"_blank\">familytreeseeker.com</a> (English/International) are supported."
+msgstr "To tell search engines that a GENDEX file is available, you should submit the url above to the genealogical search engine of your choice. Currently only <a href=\"http://www.stamboomzoeker.nl/?l=nl\" target=\"_blank\">stamboomzoeker.nl</a> (Dutch) and <a href=\"http://www.familytreeseeker.com/?l=en\" target=\"_blank\">familytreeseeker.com</a> (English/International) are supported."
 
 #: modules_v3\fancy_gendex/module.php:159
 msgid "Use this url (without the quotes) as general url to the individual pages:"
@@ -70,6 +70,9 @@ msgstr "update GENDEX text file"
 
 #~ msgid "Note: the gendex text file is not automatically updated. If you have made changes to your tree you need to update the gendex text file manually by clicking on the button. You don’t need to update your subscription at the genealogical search engine."
 #~ msgstr "Note: the gendex text file is not automatically updated. If you have made changes to your tree you need to update the gendex text file manually by clicking on the button. You don’t need to update your subscription at the genealogical search engine."
+
+#~ msgid "To tell search engines that a GENDEX file is available, you should submit the url above to the genealogical search engine of your choice. Currently only <a href=\"http://www.stamboomzoeker.nl\">stamboomzoeker.nl</a> (Dutch) and <a href=\"http://www.familytreeseeker.com\">familytreeseeker.com</a> (English/International) are supported."
+#~ msgstr "To tell search engines that a GENDEX file is available, you should submit the url above to the genealogical search engine of your choice. Currently only <a href=\"http://www.stamboomzoeker.nl\">stamboomzoeker.nl</a> (Dutch) and <a href=\"http://www.familytreeseeker.com\">familytreeseeker.com</a> (English/International) are supported."
 
 #~ msgid "To tell search engines that a gendex file is available, you should submit the url above to the genealogical search engine of your choice. Currently only <a href=\"http://www.stamboomzoeker.nl\">stamboomzoeker.nl</a> (Dutch) and <a href=\"http://www.familytreeseeker.com\">familytreeseeker.com</a> (English/International) are supported."
 #~ msgstr "To tell search engines that a gendex file is available, you should submit the url above to the genealogical search engine of your choice. Currently only <a href=\"http://www.stamboomzoeker.nl\">stamboomzoeker.nl</a> (Dutch) and <a href=\"http://www.familytreeseeker.com\">familytreeseeker.com</a> (English/International) are supported."

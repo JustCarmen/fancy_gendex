@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Fancy Privacy List\n"
-"POT-Creation-Date: 2014-06-29 21:28+0100\n"
-"PO-Revision-Date: 2014-06-29 21:32+0100\n"
+"POT-Creation-Date: 2014-06-29 22:06+0100\n"
+"PO-Revision-Date: 2014-06-29 22:08+0100\n"
 "Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -43,8 +43,8 @@ msgid "The GENDEX file will only contain public data."
 msgstr "Het GENDEX bestand bevat alleen openbare gegevens."
 
 #: modules_v3\fancy_gendex/module.php:158
-msgid "To tell search engines that a GENDEX file is available, you should submit the url above to the genealogical search engine of your choice. Currently only <a href=\"http://www.stamboomzoeker.nl\">stamboomzoeker.nl</a> (Dutch) and <a href=\"http://www.familytreeseeker.com\">familytreeseeker.com</a> (English/International) are supported."
-msgstr "Om zoekmachines te laten weten dat er een GENDEX bestand beschikbaar is, moet u de url hierboven indienen bij de genealogische zoekmachine van uw keuze. Momenteel worden alleen <a href=\"http://www.stamboomzoeker.nl\">stamboomzoeker.nl</a> (Nederlands) en <a href=\"http://www.familytreeseeker.com\">familytreeseeker.com</a> (Engels/Internationaal) ondersteund."
+msgid "To tell search engines that a GENDEX file is available, you should submit the url above to the genealogical search engine of your choice. Currently only <a href=\"http://www.stamboomzoeker.nl/?l=nl\" target=\"_blank\">stamboomzoeker.nl</a> (Dutch) and <a href=\"http://www.familytreeseeker.com/?l=en\" target=\"_blank\">familytreeseeker.com</a> (English/International) are supported."
+msgstr "Om zoekmachines te laten weten dat er een GENDEX bestand beschikbaar is, moet u de url hierboven indienen bij de genealogische zoekmachine van uw keuze. Momenteel worden alleen <a href=\"http://www.stamboomzoeker.nl/?l=nl\">stamboomzoeker.nl</a> (Nederlands) en <a href=\"http://www.familytreeseeker.com/?l=en\">familytreeseeker.com</a> (Engels/Internationaal) ondersteund."
 
 #: modules_v3\fancy_gendex/module.php:159
 msgid "Use this url (without the quotes) as general url to the individual pages:"
@@ -61,3 +61,6 @@ msgstr "Maak een GENDEX tekst bestand"
 #: modules_v3\fancy_gendex/module.php:144
 msgid "update GENDEX text file"
 msgstr "GENDEX tekst bestand bijwerken"
+
+#~ msgid "To tell search engines that a GENDEX file is available, you should submit the url above to the genealogical search engine of your choice. Currently only <a href=\"http://www.stamboomzoeker.nl\">stamboomzoeker.nl</a> (Dutch) and <a href=\"http://www.familytreeseeker.com\">familytreeseeker.com</a> (English/International) are supported."
+#~ msgstr "Om zoekmachines te laten weten dat er een GENDEX bestand beschikbaar is, moet u de url hierboven indienen bij de genealogische zoekmachine van uw keuze. Momenteel worden alleen <a href=\"http://www.stamboomzoeker.nl\">stamboomzoeker.nl</a> (Nederlands) en <a href=\"http://www.familytreeseeker.com\">familytreeseeker.com</a> (Engels/Internationaal) ondersteund."
