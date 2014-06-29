@@ -24,6 +24,28 @@ if (!defined('WT_WEBTREES')) {
 }
 
 class fancy_gendex_WT_Module extends WT_Module implements WT_Module_Config {
+	
+	public function __construct() {
+		parent::__construct();
+		// Load any local user translations
+		if (is_dir(WT_MODULES_DIR.$this->getName().'/language')) {
+			if (file_exists(WT_MODULES_DIR.$this->getName().'/language/'.WT_LOCALE.'.mo')) {
+				WT_I18N::addTranslation(
+					new Zend_Translate('gettext', WT_MODULES_DIR.$this->getName().'/language/'.WT_LOCALE.'.mo', WT_LOCALE)
+				);
+			}
+			if (file_exists(WT_MODULES_DIR.$this->getName().'/language/'.WT_LOCALE.'.php')) {
+				WT_I18N::addTranslation(
+					new Zend_Translate('array', WT_MODULES_DIR.$this->getName().'/language/'.WT_LOCALE.'.php', WT_LOCALE)
+				);
+			}
+			if (file_exists(WT_MODULES_DIR.$this->getName().'/language/'.WT_LOCALE.'.csv')) {
+				WT_I18N::addTranslation(
+					new Zend_Translate('csv', WT_MODULES_DIR.$this->getName().'/language/'.WT_LOCALE.'.csv', WT_LOCALE)
+				);
+			}
+		}
+	}
 
 	// Extend WT_Module
 	public function getTitle() {
@@ -32,7 +54,7 @@ class fancy_gendex_WT_Module extends WT_Module implements WT_Module_Config {
 
 	// Extend WT_Module
 	public function getDescription() {
-		return /* I18N: Description of the module */ WT_I18N::translate('Generate gendex file for genealogical search engines.');
+		return /* I18N: Description of the module */ WT_I18N::translate('Generate GENDEX file for genealogical search engines.');
 	}	
 	
 	// Get a list of all the individuals for the choosen gedcom
@@ -133,10 +155,10 @@ class fancy_gendex_WT_Module extends WT_Module implements WT_Module_Config {
 		if(file_exists(WT_ROOT . 'gendex.txt')) {		
 			$html .=  '<p>'.WT_I18N::translate('Click on the link below to view your GENDEX file.').'</p>'
 					. '<a href="'.$gendex_url.'">'.$gendex_url.'</a>'
-					. '<p>'.WT_I18N::translate('To tell search engines that a gendex file is available, you should submit the url above to the genealogical search engine of your choice. Currently only <a href="http://www.stamboomzoeker.nl">stamboomzoeker.nl</a> (Dutch) and <a href="http://www.familytreeseeker.com">familytreeseeker.com</a> (English/International) are supported.').'</p>'
+					. '<p>'.WT_I18N::translate('To tell search engines that a GENDEX file is available, you should submit the url above to the genealogical search engine of your choice. Currently only <a href="http://www.stamboomzoeker.nl">stamboomzoeker.nl</a> (Dutch) and <a href="http://www.familytreeseeker.com">familytreeseeker.com</a> (English/International) are supported.').'</p>'
 					. '<p>'.WT_I18N::translate('Use this url (without the quotes) as general url to the individual pages:'). ' “'.WT_SERVER_NAME.WT_SCRIPT_PATH.'individual.php?pid=”'
 					. '</p><hr>'
-					. '<p>'.WT_I18N::translate('Note: the gendex text file is not automatically updated. If you have made changes to your tree you need to update the gendex text file manually by clicking on the button. You don’t need to update your subscription at the genealogical search engine.')
+					. '<p>'.WT_I18N::translate('Note: the GENDEX text file is not automatically updated. If you have made changes to your tree you need to update the GENDEX text file manually by clicking on the button. You do <b>not</b> need to update your subscription at the genealogical search engine.')
 					. '</p><hr>';
 		}		
 		echo $html;
@@ -147,7 +169,7 @@ class fancy_gendex_WT_Module extends WT_Module implements WT_Module_Config {
 		return 'module.php?mod='.$this->getName().'&amp;mod_action=admin_config';
 	}
 
-	// The gendex file contains references to all none private individuals.
+	// The GENDEX file contains references to all none private individuals.
 	private function create_gendex() {
 		$data=';;Generated with '.WT_WEBTREES.' '.WT_VERSION.' on '.strip_tags(format_timestamp(WT_CLIENT_TIMESTAMP)).PHP_EOL;
 		foreach (WT_Tree::getAll() as $tree) {
@@ -155,11 +177,11 @@ class fancy_gendex_WT_Module extends WT_Module implements WT_Module_Config {
 				$data .= $this->get_gendex_content($tree, $this->getAllNames($tree->tree_id));
 			}
 		}
-		// create gendex text file
+		// create GENDEX text file
 		Zend_Session::writeClose();
 		$filename = WT_ROOT . 'gendex.txt';
 		
-		// make our gendex text file if it does not exist.
+		// make our GENDEX text file if it does not exist.
 		if(!file_exists($filename)) {
 			$handle = @fopen($filename, 'w');
 			fclose($handle);
