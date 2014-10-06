@@ -131,7 +131,7 @@ class fancy_gendex_WT_Module extends WT_Module implements WT_Module_Config {
 				. '<h3>'.WT_I18N::translate('Which family trees should be included in the GENDEX file?').'</h3>';
 				foreach (WT_Tree::getAll() as $tree) {
 					$html .= '<p><input type="checkbox" name="FG'.$tree->tree_id.'"';
-					if (get_gedcom_setting($tree->tree_id, 'FANCY_GENDEX')) {
+					if ($WT_TREE->getPreference('FANCY_GENDEX')) {
 						$html .= ' checked="checked"';
 					}
 					$html .= '>'.$tree->tree_title_html.'</p>';
@@ -170,7 +170,7 @@ class fancy_gendex_WT_Module extends WT_Module implements WT_Module_Config {
 	private function create_gendex() {
 		$data=';;Generated with '.WT_WEBTREES.' '.WT_VERSION.' on '.strip_tags(format_timestamp(WT_CLIENT_TIMESTAMP)).PHP_EOL;
 		foreach (WT_Tree::getAll() as $tree) {
-			if(get_gedcom_setting($tree->tree_id, 'FANCY_GENDEX')) {
+			if($WT_TREE->getPreference('FANCY_GENDEX')) {
 				$data .= $this->get_gendex_content($tree, $this->getAllNames($tree->tree_id));
 			}
 		}
