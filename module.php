@@ -75,7 +75,7 @@ class fancy_gendex_WT_Module extends WT_Module implements WT_Module_Config {
 			$xref = $indi['ID'];
 			$record = WT_Individual::getInstance($xref, $tree->tree_id);
 			if($record && $record->canShowName(WT_PRIV_PUBLIC)) {
-				$content.=$record->getXref().'|'.$indi['SURNAME'].'|'.$indi['GIVN'].' /'.$indi['SURNAME'].'/|'.$this->print_date('BIRT', $xref).'|'.$record->getBirthPlace().'|'.$this->print_date('DEAT', $xref).'|'.$record->getDeathPlace().'|'.PHP_EOL;
+				$content.=$record->getXref().'&ged='.$tree->tree_name.'|' .$indi['SURNAME'].'|'.$indi['GIVN'].' /'.$indi['SURNAME'].'/|'.$this->print_date('BIRT', $xref).'|'.$record->getBirthPlace().'|'.$this->print_date('DEAT', $xref).'|'.$record->getDeathPlace().'|'.PHP_EOL;
 			}
 		}
 		return $content;
