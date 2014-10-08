@@ -78,7 +78,7 @@ class fancy_gendex_WT_Module extends WT_Module implements WT_Module_Config {
 				$content.=$record->getXref().'&ged='.$tree->tree_name.'|' .$indi['SURNAME'].'|'.$indi['GIVN'].' /'.$indi['SURNAME'].'/|'.$this->print_date('BIRT', $xref).'|'.$record->getBirthPlace().'|'.$this->print_date('DEAT', $xref).'|'.$record->getDeathPlace().'|'.PHP_EOL;
 			}
 		}
-		return $content;
+		return mb_convert_encoding($content, "ISO-8859-1", "UTF-8");
 	}
 	
 	private function print_date($fact, $xref) {
