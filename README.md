@@ -3,7 +3,7 @@ Fancy Gendex
 
 Fancy Gendex Module for webtrees 1.5x
 
-The development version of the module requires [webtrees 1.5.4](https://github.com/fisharebest/webtrees).
+The module requires [webtrees 1.5.4](https://github.com/fisharebest/webtrees).
 
 Description
 -----------
@@ -12,9 +12,9 @@ A GENDEX file is an index of personal data and a short page URL. It is used to i
 __The GENDEX file only contains public data.__
 
 The search engines below are known to accept the GENDEX textfile created by this module:
-*[The Gendex Network (English/International)](http://www.gendexnetwork.org)
-*[Familytreeseeker (English/International)](http://www.familytreeseeker.com)
-*[Stamboomzoeker (Dutch)](http:/www.stamboomzoeker.nl)
+* [The Gendex Network (English/International)](http://www.gendexnetwork.org)
+* [Familytreeseeker (English/International)](http://www.familytreeseeker.com)
+* [Stamboomzoeker (Dutch)](http:/www.stamboomzoeker.nl)
 
 On the Fancy Gendex configuration page select the trees you want to include and push the button to create your GENDEX file.
 
