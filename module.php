@@ -152,8 +152,14 @@ class fancy_gendex_WT_Module extends WT_Module implements WT_Module_Config {
 		if(file_exists(WT_ROOT . 'gendex.txt')) {		
 			$html .=  '<p>'.WT_I18N::translate('Click on the link below to view your GENDEX file.').'</p>'
 					. '<a href="'.$gendex_url.'" target="_blank">'.$gendex_url.'</a>'
-					. '<p>'.WT_I18N::translate('To tell search engines that a GENDEX file is available, you should submit the url above to the genealogical search engine of your choice. Currently only <a href="http://www.stamboomzoeker.nl/?l=nl" target="_blank">stamboomzoeker.nl</a> (Dutch) and <a href="http://www.familytreeseeker.com/?l=en" target="_blank">familytreeseeker.com</a> (English/International) are supported.').'</p>'
-					. '<p>'.WT_I18N::translate('Use this url (without the quotes) as general url to the individual pages:'). ' “'.WT_SERVER_NAME.WT_SCRIPT_PATH.'individual.php?pid=”'
+					. '<p>'.WT_I18N::translate('To tell search engines that a GENDEX file is available, you should submit the url above to the genealogical search engine of your choice.').'</p>'
+					. '<p>'.WT_I18N::translate('The search engines below are known to accept the Gendex textfile created by this module:').'</p>'
+					. '<ul>'
+					. ' <li><a href="http://www.gendexnetwork.org" target="_blank">The Gendex Network</a> ('.WT_I18N::translate('English/International').')</li>'
+					. ' <li><a href="http://www.familytreeseeker.com/?l=en" target="_blank">Familytreeseeker</a> ('.WT_I18N::translate('English/Internationa').')</li>'
+					. '	<li><a href="http://www.stamboomzoeker.nl/?l=nl" target="_blank">Stamboomzoeker</a> ('.WT_I18N::translate('Dutch').')</li>'					
+					. '</ul>'
+					. '<p>'.WT_I18N::translate('You need this url (without the quotes) as general url to the individual pages when submitting to stamboomzoeker.nl or familytreeseeker.com:'). ' “'.WT_SERVER_NAME.WT_SCRIPT_PATH.'individual.php?pid=”'
 					. '</p><hr>'
 					. '<p>'.WT_I18N::translate('Note: the GENDEX text file is not automatically updated. If you have made changes to your tree you need to update the GENDEX text file manually by clicking on the button. You do <b>not</b> need to update your subscription at the genealogical search engine.')
 					. '</p><hr>';
