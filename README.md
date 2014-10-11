@@ -3,7 +3,7 @@ Fancy Gendex
 
 Fancy Gendex Module for webtrees 1.5x
 
-The module requires [webtrees 1.5.4](https://github.com/fisharebest/webtrees).
+This module requires [webtrees 1.5.4](https://github.com/fisharebest/webtrees).
 
 Description
 -----------
