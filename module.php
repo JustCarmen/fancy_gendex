@@ -188,7 +188,7 @@ class fancy_gendex_WT_Module extends WT_Module implements WT_Module_Config {
 		if(!file_exists($filename)) {
 			$handle = @fopen($filename, 'w');
 			fclose($handle);
-			chmod($filename, WT_PERM_FILE);
+			chmod($filename, 0644);
 		}
 		
 		// Let's make sure the file exists and is writable first.
