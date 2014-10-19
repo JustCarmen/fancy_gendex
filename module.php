@@ -58,11 +58,12 @@ class fancy_gendex_WT_Module extends WT_Module implements WT_Module_Config {
 	private function getAllNames($tree_id) {
 		$sql = "SELECT SQL_CACHE n_id, n_surname, n_givn FROM `##name` WHERE n_file=? AND n_type=? ORDER BY n_sort ASC";
 		$args = array($tree_id, 'NAME');
+		$filter = new Zend_Filter_StringToUpper(array('encoding' => 'UTF-8'));
 
 		foreach (WT_DB::prepare($sql)->execute($args)->fetchAll() as $row) {
 			$list[] = array(
 				'ID' 		=>$row->n_id,
-				'SURNAME' 	=>strtoupper($row->n_surname),
+				'SURNAME' 	=>$filter->filter($row->n_surname),
 				'GIVN' 		=>$row->n_givn
 			);
 		}
