@@ -180,6 +180,10 @@ class fancy_gendex_WT_Module extends WT_Module implements WT_Module_Config {
 				$data .= $this->get_gendex_content($tree, $this->getAllNames($tree->tree_id));
 			}
 		}
+		
+		//  add UTF-8 byte-order mark to the data - see: http://stackoverflow.com/a/12215021
+		$data="\xEF\xBB\xBF".$data;
+		
 		// create GENDEX text file
 		Zend_Session::writeClose();
 		$filename = WT_ROOT . 'gendex.txt';
