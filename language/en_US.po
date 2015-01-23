@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Fancy Privacy List\n"
-"POT-Creation-Date: 2014-10-11 18:20+0100\n"
+"POT-Creation-Date: 2015-01-23 08:26+0100\n"
 "PO-Revision-Date: 2014-10-11 18:21+0100\n"
 "Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
 "Language-Team: \n"
@@ -16,82 +16,61 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: modules_v3\\fancy_privacy_list\n"
 
-#: modules_v3\fancy_gendex/module.php:127
+#: modules_v3\fancy_gendex/module.php:134
 msgid "A GENDEX file is an index of personal data and a short page URL. It is used to index a genealogical website by a genealogical search engine. The idea behind it is to join numerous pedigrees of individual genealogical researchers to a central database, while the individual genealogical researchers are still keeping  all control over their data. Unlike a GEDCOM file a GENDEX file contains no information about the family relationships between individuals. This means the file is useless without the corresponding website."
 msgstr "A GENDEX file is an index of personal data and a short page URL. It is used to index a genealogical website by a genealogical search engine. The idea behind it is to join numerous pedigrees of individual genealogical researchers to a central database, while the individual genealogical researchers are still keeping  all control over their data. Unlike a GEDCOM file a GENDEX file contains no information about the family relationships between individuals. This means the file is useless without the corresponding website."
 
-#: modules_v3\fancy_gendex/module.php:153
+#: modules_v3\fancy_gendex/module.php:170
 msgid "Click on the link below to view your GENDEX file."
 msgstr "Click on the link below to view your GENDEX file."
 
-#: modules_v3\fancy_gendex/module.php:160
+#: modules_v3\fancy_gendex/module.php:182
 msgid "Dutch"
 msgstr "Dutch"
 
-#: modules_v3\fancy_gendex/module.php:158
-#: modules_v3\fancy_gendex/module.php:159
+#: modules_v3\fancy_gendex/module.php:176
+#: modules_v3\fancy_gendex/module.php:179
 msgid "English/International"
 msgstr "English/International"
 
 #. I18N: Name of a module
-#: modules_v3\fancy_gendex/module.php:49
+#: modules_v3\fancy_gendex/module.php:50
 msgid "Fancy Gendex"
 msgstr "Fancy Gendex"
 
 #. I18N: Description of the module
-#: modules_v3\fancy_gendex/module.php:54
+#: modules_v3\fancy_gendex/module.php:55
 msgid "Generate GENDEX file for genealogical search engines."
 msgstr "Generate GENDEX file for genealogical search engines."
 
-#: modules_v3\fancy_gendex/module.php:164
+#: modules_v3\fancy_gendex/module.php:186
 msgid "Note: the GENDEX text file is not automatically updated. If you have made changes to your tree you need to update the GENDEX text file manually by clicking on the button. You do <b>not</b> need to update your subscription at the genealogical search engine."
 msgstr "Note: the GENDEX text file is not automatically updated. If you have made changes to your tree you need to update the GENDEX text file manually by clicking on the button. You do <b>not</b> need to update your subscription at the genealogical search engine."
 
-#: modules_v3\fancy_gendex/module.php:128
+#: modules_v3\fancy_gendex/module.php:135
 msgid "The GENDEX file will only contain public data."
 msgstr "The GENDEX file will only contain public data."
 
-#: modules_v3\fancy_gendex/module.php:156
+#: modules_v3\fancy_gendex/module.php:173
 msgid "The search engines below are known to accept the GENDEX textfile created by this module:"
 msgstr "The search engines below are known to accept the GENDEX textfile created by this module:"
 
-#: modules_v3\fancy_gendex/module.php:155
+#: modules_v3\fancy_gendex/module.php:172
 msgid "To tell search engines that a GENDEX file is available, you should submit the url above to the genealogical search engine of your choice."
 msgstr "To tell search engines that a GENDEX file is available, you should submit the url above to the genealogical search engine of your choice."
 
-#: modules_v3\fancy_gendex/module.php:131
+#: modules_v3\fancy_gendex/module.php:139
 msgid "Which family trees should be included in the GENDEX file?"
 msgstr "Which family trees should be included in the GENDEX file?"
 
-#: modules_v3\fancy_gendex/module.php:162
+#: modules_v3\fancy_gendex/module.php:185
 msgid "You need this url (without the quotes) as general url to the individual pages when submitting to Stamboomzoeker or Familytreeseeker:"
 msgstr "You need this url (without the quotes) as general url to the individual pages when submitting to Stamboomzoeker or Familytreeseeker:"
 
-#: modules_v3\fancy_gendex/module.php:144
+#: modules_v3\fancy_gendex/module.php:160
 msgid "create GENDEX text file"
 msgstr "create GENDEX text file"
 
-#: modules_v3\fancy_gendex/module.php:141
+#: modules_v3\fancy_gendex/module.php:158
 msgid "update GENDEX text file"
 msgstr "update GENDEX text file"
-
-#~ msgid "Generate gendex file for genealogical search engines."
-#~ msgstr "Generate gendex file for genealogical search engines."
-
-#~ msgid "Note: the GENDEX text file is not automatically updated. If you have made changes to your tree you need to update the GENDEX text file manually by clicking on the button. You don’t need to update your subscription at the genealogical search engine."
-#~ msgstr "Note: the GENDEX text file is not automatically updated. If you have made changes to your tree you need to update the GENDEX text file manually by clicking on the button. You don’t need to update your subscription at the genealogical search engine."
-
-#~ msgid "Note: the gendex text file is not automatically updated. If you have made changes to your tree you need to update the gendex text file manually by clicking on the button. You don’t need to update your subscription at the genealogical search engine."
-#~ msgstr "Note: the gendex text file is not automatically updated. If you have made changes to your tree you need to update the gendex text file manually by clicking on the button. You don’t need to update your subscription at the genealogical search engine."
-
-#~ msgid "To tell search engines that a GENDEX file is available, you should submit the url above to the genealogical search engine of your choice. Currently only <a href=\"http://www.stamboomzoeker.nl\">stamboomzoeker.nl</a> (Dutch) and <a href=\"http://www.familytreeseeker.com\">familytreeseeker.com</a> (English/International) are supported."
-#~ msgstr "To tell search engines that a GENDEX file is available, you should submit the url above to the genealogical search engine of your choice. Currently only <a href=\"http://www.stamboomzoeker.nl\">stamboomzoeker.nl</a> (Dutch) and <a href=\"http://www.familytreeseeker.com\">familytreeseeker.com</a> (English/International) are supported."
-
-#~ msgid "To tell search engines that a GENDEX file is available, you should submit the url above to the genealogical search engine of your choice. Currently only <a href=\"http://www.stamboomzoeker.nl/?l=nl\" target=\"_blank\">stamboomzoeker.nl</a> (Dutch) and <a href=\"http://www.familytreeseeker.com/?l=en\" target=\"_blank\">familytreeseeker.com</a> (English/International) are supported."
-#~ msgstr "To tell search engines that a GENDEX file is available, you should submit the url above to the genealogical search engine of your choice. Currently only <a href=\"http://www.stamboomzoeker.nl/?l=nl\" target=\"_blank\">stamboomzoeker.nl</a> (Dutch) and <a href=\"http://www.familytreeseeker.com/?l=en\" target=\"_blank\">familytreeseeker.com</a> (English/International) are supported."
-
-#~ msgid "To tell search engines that a gendex file is available, you should submit the url above to the genealogical search engine of your choice. Currently only <a href=\"http://www.stamboomzoeker.nl\">stamboomzoeker.nl</a> (Dutch) and <a href=\"http://www.familytreeseeker.com\">familytreeseeker.com</a> (English/International) are supported."
-#~ msgstr "To tell search engines that a gendex file is available, you should submit the url above to the genealogical search engine of your choice. Currently only <a href=\"http://www.stamboomzoeker.nl\">stamboomzoeker.nl</a> (Dutch) and <a href=\"http://www.familytreeseeker.com\">familytreeseeker.com</a> (English/International) are supported."
-
-#~ msgid "Use this url (without the quotes) as general url to the individual pages:"
-#~ msgstr "Use this url (without the quotes) as general url to the individual pages:"
