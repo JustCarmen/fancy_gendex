@@ -148,7 +148,7 @@ class fancy_gendex_WT_Module extends WT_Module implements WT_Module_Config {
 									checked="checked"
 								<?php endif; ?>
 								>
-								<?php echo $tree->nameHtml(); ?>
+								<?php echo $tree->titleHtml(); ?>
 						</label>
 					</div>
 				<?php endforeach; ?>
