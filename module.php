@@ -75,9 +75,9 @@ class fancy_gendex_WT_Module extends WT_Module implements WT_Module_Config {
 		$content = '';
 		foreach ($indis as $indi) {
 			$xref = $indi['ID'];
-			$record = WT_Individual::getInstance($xref, $tree->tree_id);
+			$record = WT_Individual::getInstance($xref, $tree->id());
 			if ($record && $record->canShowName(WT_PRIV_PUBLIC)) {
-				$content.=$record->getXref() . '&ged=' . $tree->tree_name . '|' . $indi['SURNAME'] . '|' . $indi['GIVN'] . ' /' . $indi['SURNAME'] . '/|' . $this->print_date('BIRT', $xref) . '|' . $record->getBirthPlace() . '|' . $this->print_date('DEAT', $xref) . '|' . $record->getDeathPlace() . '|' . PHP_EOL;
+				$content.=$record->getXref() . '&ged=' . $tree->name() . '|' . $indi['SURNAME'] . '|' . $indi['GIVN'] . ' /' . $indi['SURNAME'] . '/|' . $this->print_date('BIRT', $xref) . '|' . $record->getBirthPlace() . '|' . $this->print_date('DEAT', $xref) . '|' . $record->getDeathPlace() . '|' . PHP_EOL;
 			}
 		}
 		return $content;
@@ -119,7 +119,7 @@ class fancy_gendex_WT_Module extends WT_Module implements WT_Module_Config {
 		// Save the updated preferences
 		if (WT_Filter::post('action') == 'save' && WT_Filter::checkCsrf()) {
 			foreach (WT_Tree::getAll() as $tree) {
-				$tree->setPreference('FANCY_GENDEX', WT_Filter::postBool('FG' . $tree->tree_id));
+				$tree->setPreference('FANCY_GENDEX', WT_Filter::postBool('FG' . $tree->id()));
 			}
 			$this->create_gendex();
 		}
@@ -143,12 +143,12 @@ class fancy_gendex_WT_Module extends WT_Module implements WT_Module_Config {
 						<label>
 							<input
 								type="checkbox"
-								name="FG<?php echo $tree->tree_id; ?>"
+								name="FG<?php echo $tree->id(); ?>"
 								<?php if ($tree->getPreference('FANCY_GENDEX')): ?>
 									checked="checked"
 								<?php endif; ?>
 								>
-								<?php echo $tree->tree_title_html; ?>
+								<?php echo $tree->nameHtml(); ?>
 						</label>
 					</div>
 				<?php endforeach; ?>
@@ -199,7 +199,7 @@ class fancy_gendex_WT_Module extends WT_Module implements WT_Module_Config {
 		$data = ';;Generated with ' . WT_WEBTREES . ' ' . WT_VERSION . ' on ' . strip_tags(format_timestamp(WT_CLIENT_TIMESTAMP)) . PHP_EOL;
 		foreach (WT_Tree::getAll() as $tree) {
 			if ($tree->getPreference('FANCY_GENDEX')) {
-				$data .= $this->get_gendex_content($tree, $this->getAllNames($tree->tree_id));
+				$data .= $this->get_gendex_content($tree, $this->getAllNames($tree->id()));
 			}
 		}
 
