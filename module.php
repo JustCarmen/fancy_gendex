@@ -161,6 +161,7 @@ class fancy_gendex_WT_Module extends WT_Module implements WT_Module_Config {
 			}
 			?>
 			<button type="submit" class="btn btn-primary">
+				<i class="fa fa-check"></i>
 				<?php echo $button_text; ?>
 			</button>
 		</form>
