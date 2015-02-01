@@ -165,7 +165,7 @@ class fancy_gendex_WT_Module extends WT_Module implements WT_Module_Config {
 			</button>
 		</form>
 		<hr style="border-color:#ccc">
-		<?php $gendex_url = WT_SERVER_NAME . WT_SCRIPT_PATH . 'gendex.txt'; ?>
+		<?php $gendex_url = WT_BASE_URL . 'gendex.txt'; ?>
 		<?php if (file_exists(WT_ROOT . 'gendex.txt')): ?>
 			<p><?php echo WT_I18N::translate('Click on the link below to view your GENDEX file.'); ?></p>
 			<p><a href="<?php echo $gendex_url; ?>" target="_blank"><?php echo $gendex_url; ?></a></p>
@@ -182,7 +182,7 @@ class fancy_gendex_WT_Module extends WT_Module implements WT_Module_Config {
 					<a href="http://www.stamboomzoeker.nl/?l=nl" target="_blank">Stamboomzoeker</a> (<?php echo WT_I18N::translate('Dutch'); ?>)
 				</li>
 			</ul>
-			<p><?php echo WT_I18N::translate('You need this url (without the quotes) as general url to the individual pages when submitting to Stamboomzoeker or Familytreeseeker:'); ?> “<?php echo WT_SERVER_NAME . WT_SCRIPT_PATH; ?>individual.php?pid=”</p>
+			<p><?php echo WT_I18N::translate('You need this url (without the quotes) as general url to the individual pages when submitting to Stamboomzoeker or Familytreeseeker:'); ?> “<?php echo WT_BASE_URL; ?>individual.php?pid=”</p>
 			<p class="alert alert-info"><?php echo WT_I18N::translate('Note: the GENDEX text file is not automatically updated. If you have made changes to your tree you need to update the GENDEX text file manually by clicking on the button. You do <b>not</b> need to update your subscription at the genealogical search engine.'); ?></p>
 			<hr>
 		<?php endif; ?>
