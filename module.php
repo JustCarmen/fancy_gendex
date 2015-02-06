@@ -57,8 +57,10 @@ class fancy_gendex_WT_Module extends Module implements ModuleConfigInterface {
 
 	// Get a list of all the individuals for the choosen gedcom
 	private function getAllNames($tree_id) {
-		$sql = "SELECT SQL_CACHE n_id, n_surname, n_givn FROM `##name` WHERE n_file=? AND n_type=? ORDER BY n_sort ASC";
-		$args = array($tree_id, 'NAME');
+		$sql = "SELECT SQL_CACHE n_id, n_surname, n_givn FROM `##name` WHERE n_file = :tree_id AND n_type = 'NAME' ORDER BY n_sort ASC";
+		$args = array(
+			'tree_id' => $tree_id
+		);
 		$filter = new Zend_Filter_StringToUpper(array('encoding' => 'UTF-8'));
 
 		foreach (Database::prepare($sql)->execute($args)->fetchAll() as $row) {
