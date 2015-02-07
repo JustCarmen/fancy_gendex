@@ -76,16 +76,16 @@ class fancy_gendex_WT_Module extends WT_Module implements WT_Module_Config {
 			$xref = $indi['ID'];
 			$record = WT_Individual::getInstance($xref, $tree->tree_id);
 			if($record && $record->canShowName(WT_PRIV_PUBLIC)) {
-				$content.=$record->getXref().'&ged='.$tree->tree_name.'|' .$indi['SURNAME'].'|'.$indi['GIVN'].' /'.$indi['SURNAME'].'/|'.$this->print_date('BIRT', $xref).'|'.$record->getBirthPlace().'|'.$this->print_date('DEAT', $xref).'|'.$record->getDeathPlace().'|'.PHP_EOL;
+				$content.=$record->getXref().'&ged='.$tree->tree_name.'|' .$indi['SURNAME'].'|'.$indi['GIVN'].' /'.$indi['SURNAME'].'/|'.$this->print_date('BIRT', $xref, $tree).'|'.$record->getBirthPlace().'|'.$this->print_date('DEAT', $xref, $tree).'|'.$record->getDeathPlace().'|'.PHP_EOL;
 			}
 		}
 		return $content;
 	}
 	
-	private function print_date($fact, $xref) {
+	private function print_date($fact, $xref, $tree) {
 		$row=
-			WT_DB::prepare("SELECT SQL_CACHE d_year, d_month, d_day FROM `##dates` WHERE d_fact=? AND d_gid=? LIMIT 1")
-			->execute(array($fact, $xref))
+			WT_DB::prepare("SELECT SQL_CACHE d_year, d_month, d_day FROM `##dates` WHERE d_fact=? AND d_gid=? AND d_file=? LIMIT 1")
+			->execute(array($fact, $xref, $tree->tree_id))
 			->fetchOneRow();
 		if ($row) {
 			$day = $row->d_day > 0 ? $row->d_day.' ' : ''; 
