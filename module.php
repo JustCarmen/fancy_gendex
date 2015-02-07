@@ -73,19 +73,19 @@ class fancy_gendex_WT_Module extends Module implements ModuleConfigInterface {
 		return $list;
 	}
 
-	private function get_gendex_content($tree, $indis) {
+	private function getGendexContent($tree, $indis) {
 		$content = '';
 		foreach ($indis as $indi) {
 			$xref = $indi['ID'];
 			$record = Individual::getInstance($xref, $tree->getTreeId());
 			if ($record && $record->canShowName(WT_PRIV_PUBLIC)) {
-				$content.=$record->getXref() . '&ged=' . $tree->getName() . '|' . $indi['SURNAME'] . '|' . $indi['GIVN'] . ' /' . $indi['SURNAME'] . '/|' . $this->print_date('BIRT', $xref, $tree) . '|' . $record->getBirthPlace() . '|' . $this->print_date('DEAT', $xref, $tree) . '|' . $record->getDeathPlace() . '|' . PHP_EOL;
+				$content.=$record->getXref() . '&ged=' . $tree->getName() . '|' . $indi['SURNAME'] . '|' . $indi['GIVN'] . ' /' . $indi['SURNAME'] . '/|' . $this->printDate('BIRT', $xref, $tree) . '|' . $record->getBirthPlace() . '|' . $this->printDate('DEAT', $xref, $tree) . '|' . $record->getDeathPlace() . '|' . PHP_EOL;
 			}
 		}
 		return $content;
 	}
 
-	private function print_date($fact, $xref, $tree) {
+	private function printDate($fact, $xref, $tree) {
 		$row = Database::prepare(
 			"SELECT SQL_CACHE d_year, d_month, d_day FROM `##dates`" .
 			" WHERE d_fact = :fact" .
@@ -132,7 +132,7 @@ class fancy_gendex_WT_Module extends Module implements ModuleConfigInterface {
 			foreach (Tree::getAll() as $tree) {
 				$tree->setPreference('FANCY_GENDEX', Filter::postBool('FG' . $tree->getTreeId()));
 			}
-			$this->create_gendex();
+			$this->createGendex();
 		}
 		?>
 		
@@ -207,11 +207,11 @@ class fancy_gendex_WT_Module extends Module implements ModuleConfigInterface {
 	}
 
 	// The GENDEX file contains references to all none private individuals.
-	private function create_gendex() {
+	private function createGendex() {
 		$data = ';;Generated with ' . WT_WEBTREES . ' ' . WT_VERSION . ' on ' . strip_tags(format_timestamp(WT_CLIENT_TIMESTAMP)) . PHP_EOL;
 		foreach (Tree::getAll() as $tree) {
 			if ($tree->getPreference('FANCY_GENDEX')) {
-				$data .= $this->get_gendex_content($tree, $this->getAllNames($tree->getTreeId()));
+				$data .= $this->getGendexContent($tree, $this->getAllNames($tree->getTreeId()));
 			}
 		}
 
