@@ -79,33 +79,33 @@ class fancy_gendex_WT_Module extends Module implements ModuleConfigInterface {
 			$xref = $indi['ID'];
 			$record = Individual::getInstance($xref, $tree->getTreeId());
 			if ($record && $record->canShowName(WT_PRIV_PUBLIC)) {
-				$content.=$record->getXref() . '&ged=' . $tree->getName() . '|' . $indi['SURNAME'] . '|' . $indi['GIVN'] . ' /' . $indi['SURNAME'] . '/|' . $this->printDate('BIRT', $xref, $tree) . '|' . $record->getBirthPlace() . '|' . $this->printDate('DEAT', $xref, $tree) . '|' . $record->getDeathPlace() . '|' . PHP_EOL;
+				$content.=$record->getXref() . '&ged=' . $tree->getName() . '|' . $indi['SURNAME'] . '|' . $indi['GIVN'] . ' /' . $indi['SURNAME'] . '/|' . $this->printDate(array('BIRT', 'BAPM', 'CHR'), $xref, $tree) . '|' . $record->getBirthPlace() . '|' . $this->printDate(array('DEAT', 'BURI'), $xref, $tree) . '|' . $record->getDeathPlace() . '|' . PHP_EOL;
 			}
 		}
 		return $content;
 	}
 
-	private function printDate($fact, $xref, $tree) {
-		$row = Database::prepare(
-			"SELECT SQL_CACHE d_year, d_month, d_day FROM `##dates`" .
-			" WHERE d_fact = :fact" .
-			" AND d_gid = :xref" .
-			" AND d_file = :tree_id" .
-			" LIMIT 1"
-			)
-			->execute(array(
-				'fact' => $fact,
-				'xref' => $xref,
-				'tree_id' => $tree->getTreeId()))
-			->fetchOneRow();
-		if ($row) {
-			$day = $row->d_day > 0 ? $row->d_day . ' ' : '';
-			$month = !empty($row->d_month) ? $row->d_month . ' ' : '';
-			$year = $row->d_year > 0 ? $row->d_year : '';
-			$date = $day . $month . $year;
-			return $date;
-		} else {
-			return '';
+	private function printDate($facts, $xref, $tree) {
+		foreach ($facts as $fact) {
+			$row = Database::prepare(
+					"SELECT SQL_CACHE d_year, d_month, d_day FROM `##dates`" .
+					" WHERE d_fact = :fact" .
+					" AND d_gid = :xref" .
+					" AND d_file = :tree_id" .
+					" LIMIT 1"
+				)
+				->execute(array(
+					'fact'		 => $fact,
+					'xref'		 => $xref,
+					'tree_id'	 => $tree->getTreeId()))
+				->fetchOneRow();
+			if ($row) {
+				$day = $row->d_day > 0 ? $row->d_day . ' ' : '';
+				$month = !empty($row->d_month) ? $row->d_month . ' ' : '';
+				$year = $row->d_year > 0 ? $row->d_year : '';
+				$date = $day . $month . $year;
+				return $date;
+			}
 		}
 	}
 
