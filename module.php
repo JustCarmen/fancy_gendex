@@ -78,7 +78,7 @@ class FancyGendexModule extends Module implements ModuleConfigInterface {
 		foreach ($indis as $indi) {
 			$xref = $indi['ID'];
 			$record = Individual::getInstance($xref, $tree->getTreeId());
-			if ($record && $record->canShowName(WT_PRIV_PUBLIC)) {
+			if ($record && $record->canShowName(Auth::PRIV_PRIVATE)) {
 				$content.=$record->getXref() . '&ged=' . $tree->getName() . '|' . $indi['SURNAME'] . '|' . $indi['GIVN'] . ' /' . $indi['SURNAME'] . '/|' . $this->printDate(array('BIRT', 'BAPM', 'CHR'), $xref, $tree) . '|' . $record->getBirthPlace() . '|' . $this->printDate(array('DEAT', 'BURI'), $xref, $tree) . '|' . $record->getDeathPlace() . '|' . PHP_EOL;
 			}
 		}
