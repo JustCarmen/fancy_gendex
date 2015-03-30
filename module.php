@@ -21,7 +21,7 @@ use Zend_Filter_StringToUpper;
 use Zend_Session;
 use Zend_Translate;
 
-class FancyGendexModule extends Module implements ModuleConfigInterface {
+class FancyGendexModule extends AbstractModule implements ModuleConfigInterface {
 
 	public function __construct() {
 		parent::__construct('fancy_gendex');
