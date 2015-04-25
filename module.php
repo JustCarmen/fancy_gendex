@@ -198,35 +198,44 @@ class FancyGendexModule extends AbstractModule implements ModuleConfigInterface 
 			}
 		}
 
-		//  add UTF-8 byte-order mark to the data - see: http://stackoverflow.com/a/12215021
-		$data = "\xEF\xBB\xBF" . $data;
-
 		// create GENDEX text file
-		Zend_Session::writeClose();
-		$filename = WT_ROOT . 'gendex.txt';
+		$file = WT_ROOT . 'gendex.txt';
 
 		// make our GENDEX text file if it does not exist.
-		if (!file_exists($filename)) {
-			$handle = @fopen($filename, 'w');
-			fclose($handle);
-			chmod($filename, 0644);
-		}
-
-		// Let's make sure the file exists and is writable first.
-		if (is_writable($filename)) {
-
-			if (!$handle = @fopen($filename, 'w')) {
-				exit;
+		if (!file_exists($file)) {
+			if(!$handle = fopen($file, 'w')) {
+				echo $this->addMessage(I18N::translate('The gendex.txt file can not be created automatically. Try to manually create an empty text file in the root of your webtrees installation, called “gendex.txt”. Set the file permissions to 644.'), 'danger');
+			} else {
+				$this->writeGendexFile($handle, $data);
+				chmod($file, 0644);
+				echo $this->addMessage(I18N::translate('Your gendex.txt file has been created.'), 'success');
 			}
-
-			// Write the GENDEX data to our gendex.txt file.
-			if (fwrite($handle, $data) === FALSE) {
-				exit;
+		} else {
+			if(!$handle = fopen($file, 'w')) {
+				echo $this->addMessage(I18N::translate('Writing to the gendex.txt file failed. Be sure you have set the right file permissions (644).'), 'danger');
+			} else {
+				$this->writeGendexFile($handle, $data);
+				echo $this->addMessage(I18N::translate('Your gendex.txt file has been updated.'), 'success');
 			}
-			fclose($handle);
 		}
 	}
 
+	private function writeGendexFile($handle, $data) {
+		#UTF-8 - Add byte order mark
+		fwrite($handle, pack('CCC', 0xef,0xbb,0xbf));
+		fwrite($handle, $data);
+		fclose($handle);
+	}
+
+	private function addMessage($message, $type) {
+		return
+			'<div class="alert alert-' . $type . ' alert-dismissible" role="alert">' .
+			'<button type="button" class="close" data-dismiss="alert" aria-label="' . I18N::translate('close') . '">' .
+			'<span aria-hidden="true">&times;</span>' .
+			'</button>' .
+			'<span class="message">' . $message . '</span>' .
+			'</div>';
+	}
 }
 
 return new FancyGendexModule;
