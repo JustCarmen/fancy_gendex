@@ -201,7 +201,7 @@ class FancyGendexModule extends AbstractModule implements ModuleConfigInterface 
 
 		// make our GENDEX text file if it does not exist.
 		if (!file_exists($file)) {
-			if(!$handle = fopen($file, 'w')) {
+			if (!$handle = fopen($file, 'w')) {
 				echo $this->addMessage(I18N::translate('The gendex.txt file can not be created automatically. Try to manually create an empty text file in the root of your webtrees installation, called “gendex.txt”. Set the file permissions to 644.'), 'danger');
 			} else {
 				$this->writeGendexFile($handle, $data);
@@ -209,7 +209,7 @@ class FancyGendexModule extends AbstractModule implements ModuleConfigInterface 
 				echo $this->addMessage(I18N::translate('Your gendex.txt file has been created.'), 'success');
 			}
 		} else {
-			if(!$handle = fopen($file, 'w')) {
+			if (!$handle = fopen($file, 'w')) {
 				echo $this->addMessage(I18N::translate('Writing to the gendex.txt file failed. Be sure you have set the right file permissions (644).'), 'danger');
 			} else {
 				$this->writeGendexFile($handle, $data);
@@ -220,7 +220,7 @@ class FancyGendexModule extends AbstractModule implements ModuleConfigInterface 
 
 	private function writeGendexFile($handle, $data) {
 		#UTF-8 - Add byte order mark
-		fwrite($handle, pack('CCC', 0xef,0xbb,0xbf));
+		fwrite($handle, pack('CCC', 0xef, 0xbb, 0xbf));
 		fwrite($handle, $data);
 		fclose($handle);
 	}
@@ -234,6 +234,7 @@ class FancyGendexModule extends AbstractModule implements ModuleConfigInterface 
 			'<span class="message">' . $message . '</span>' .
 			'</div>';
 	}
+
 }
 
 return new FancyGendexModule;
