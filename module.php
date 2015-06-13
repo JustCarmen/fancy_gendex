@@ -20,6 +20,7 @@ namespace Fisharebest\Webtrees;
 use Fisharebest\Webtrees\Module\AbstractModule;
 use Fisharebest\Webtrees\Module\ModuleConfigInterface;
 use Fisharebest\Webtrees\Controller\PageController;
+use Fisharebest\Webtrees\Functions\FunctionsDate;
 use Zend_Filter_StringToUpper;
 
 class FancyGendexModule extends AbstractModule implements ModuleConfigInterface {
@@ -192,7 +193,7 @@ class FancyGendexModule extends AbstractModule implements ModuleConfigInterface 
 
 	// The GENDEX file contains references to all none private individuals.
 	private function createGendex() {
-		$data = ';;Generated with ' . WT_WEBTREES . ' ' . WT_VERSION . ' on ' . strip_tags(format_timestamp(WT_TIMESTAMP + WT_TIMESTAMP_OFFSET)) . PHP_EOL;
+		$data = ';;Generated with ' . WT_WEBTREES . ' ' . WT_VERSION . ' on ' . strip_tags(FunctionsDate::formatTimestamp(WT_TIMESTAMP + WT_TIMESTAMP_OFFSET)) . PHP_EOL;
 		foreach (Tree::getAll() as $tree) {
 			if ($tree->getPreference('FANCY_GENDEX')) {
 				$data .= $this->getGendexContent($tree, $this->getAllNames($tree->getTreeId()));
