@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -16,11 +14,12 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees;
 
-use Fisharebest\Webtrees\Module\AbstractModule;
-use Fisharebest\Webtrees\Module\ModuleConfigInterface;
 use Fisharebest\Webtrees\Controller\PageController;
 use Fisharebest\Webtrees\Functions\FunctionsDate;
+use Fisharebest\Webtrees\Module\AbstractModule;
+use Fisharebest\Webtrees\Module\ModuleConfigInterface;
 use Zend_Filter_StringToUpper;
 
 class FancyGendexModule extends AbstractModule implements ModuleConfigInterface {
@@ -134,31 +133,31 @@ class FancyGendexModule extends AbstractModule implements ModuleConfigInterface 
 			<input type="hidden" name="action" value="save"><?php echo Filter::getCsrf(); ?>
 			<h4><?php echo I18N::translate('Which family trees should be included in the GENDEX file?'); ?></h4>
 			<div class="form-group">
-				<?php foreach (Tree::getAll() as $tree): ?>
+		<?php foreach (Tree::getAll() as $tree): ?>
 					<div class="checkbox">
 						<label>
 							<input
 								type="checkbox"
 								name="FG<?php echo $tree->getTreeId(); ?>"
-								<?php if ($tree->getPreference('FANCY_GENDEX')): ?>
+			<?php if ($tree->getPreference('FANCY_GENDEX')): ?>
 									checked="checked"
 								<?php endif; ?>
 								>
 								<?php echo $tree->getTitleHtml(); ?>
 						</label>
 					</div>
-				<?php endforeach; ?>
+		<?php endforeach; ?>
 			</div>
-			<?php
-			if (file_exists(WT_ROOT . 'gendex.txt')) {
-				$button_text = I18N::translate('update GENDEX text file');
-			} else {
-				$button_text = I18N::translate('create GENDEX text file');
-			}
-			?>
+				<?php
+				if (file_exists(WT_ROOT . 'gendex.txt')) {
+					$button_text = I18N::translate('update GENDEX text file');
+				} else {
+					$button_text = I18N::translate('create GENDEX text file');
+				}
+				?>
 			<button type="submit" class="btn btn-primary">
 				<i class="fa fa-check"></i>
-				<?php echo $button_text; ?>
+		<?php echo $button_text; ?>
 			</button>
 		</form>
 		<hr style="border-color:#ccc">
