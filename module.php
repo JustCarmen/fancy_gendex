@@ -211,18 +211,18 @@ class FancyGendexModule extends AbstractModule implements ModuleConfigInterface 
 		// make our GENDEX text file if it does not exist.
 		if (!file_exists($file)) {
 			if (!$handle = fopen($file, 'w')) {
-				echo $this->addMessage(I18N::translate('The gendex.txt file can not be created automatically. Try to manually create an empty text file in the root of your webtrees installation, called “gendex.txt”. Set the file permissions to 644.'), 'danger');
+				echo $this->addMessage(I18N::translate('The GENDEX file can not be created automatically. Try to manually create an empty text file in the root of your webtrees installation, called “gendex.txt”. Set the file permissions to 644.'), 'danger');
 			} else {
 				$this->writeGendexFile($handle, $data);
 				chmod($file, 0644);
-				echo $this->addMessage(I18N::translate('Your gendex.txt file has been created.'), 'success');
+				echo $this->addMessage(I18N::translate('The GENDEX file has been created.'), 'success');
 			}
 		} else {
 			if (!$handle = fopen($file, 'w')) {
-				echo $this->addMessage(I18N::translate('Writing to the gendex.txt file failed. Be sure you have set the right file permissions (644).'), 'danger');
+				echo $this->addMessage(I18N::translate('Writing to the GENDEX file failed. Be sure you have set the right file permissions (644).'), 'danger');
 			} else {
 				$this->writeGendexFile($handle, $data);
-				echo $this->addMessage(I18N::translate('Your gendex.txt file has been updated.'), 'success');
+				echo $this->addMessage(I18N::translate('The GENDEX file has been updated.'), 'success');
 			}
 		}
 	}
