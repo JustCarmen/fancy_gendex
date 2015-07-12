@@ -18,6 +18,7 @@ namespace JustCarmen\WebtreesAddOns\FancyGendex;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
+use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Functions\FunctionsDate;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -44,18 +45,18 @@ class FancyGendexClass extends FancyGendexModule {
 		// make our GENDEX text file if it does not exist.
 		if (!file_exists($file)) {
 			if (!$handle = fopen($file, 'w')) {
-				echo $this->addMessage(I18N::translate('The GENDEX file can not be created automatically. Try to manually create an empty text file in the root of your webtrees installation, called “gendex.txt”. Set the file permissions to 644.'), 'danger');
+				echo FlashMessages::addMessage(I18N::translate('The GENDEX file can not be created automatically. Try to manually create an empty text file in the root of your webtrees installation, called “gendex.txt”. Set the file permissions to 644.'), 'danger');
 			} else {
 				$this->writeGendexFile($handle, $data);
 				chmod($file, 0644);
-				echo $this->addMessage(I18N::translate('The GENDEX file has been created.'), 'success');
+				echo FlashMessages::addMessage(I18N::translate('The GENDEX file has been created.'), 'success');
 			}
 		} else {
 			if (!$handle = fopen($file, 'w')) {
-				echo $this->addMessage(I18N::translate('Writing to the GENDEX file failed. Be sure you have set the right file permissions (644).'), 'danger');
+				echo FlashMessages::addMessage(I18N::translate('Writing to the GENDEX file failed. Be sure you have set the right file permissions (644).'), 'danger');
 			} else {
 				$this->writeGendexFile($handle, $data);
-				echo $this->addMessage(I18N::translate('The GENDEX file has been updated.'), 'success');
+				echo FlashMessages::addMessage(I18N::translate('The GENDEX file has been updated.'), 'success');
 			}
 		}
 	}
@@ -119,16 +120,6 @@ class FancyGendexClass extends FancyGendexModule {
 		fwrite($handle, pack('CCC', 0xef, 0xbb, 0xbf));
 		fwrite($handle, $data);
 		fclose($handle);
-	}
-
-	private function addMessage($message, $type) {
-		return
-			'<div class="alert alert-' . $type . ' alert-dismissible" role="alert">' .
-			'<button type="button" class="close" data-dismiss="alert" aria-label="' . I18N::translate('close') . '">' .
-			'<span aria-hidden="true">&times;</span>' .
-			'</button>' .
-			'<span class="message">' . $message . '</span>' .
-			'</div>';
 	}
 
 }
