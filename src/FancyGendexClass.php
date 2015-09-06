@@ -32,34 +32,27 @@ class FancyGendexClass extends FancyGendexModule {
 
 	// The GENDEX file contains references to all none private individuals.
 	protected function createGendex() {
-		$data = ';;Generated with ' . WT_WEBTREES . ' ' . WT_VERSION . ' on ' . strip_tags(FunctionsDate::formatTimestamp(WT_TIMESTAMP + WT_TIMESTAMP_OFFSET)) . PHP_EOL;
-		foreach (Tree::getAll() as $tree) {
-			if ($tree->getPreference('FANCY_GENDEX')) {
-				$data .= $this->getGendexContent($tree, $this->getAllNames($tree->getTreeId()));
-			}
-		}
-
 		// create GENDEX text file
 		$file = WT_ROOT . 'gendex.txt';
 
-		// make our GENDEX text file if it does not exist.
 		if (file_exists($file)) {
 			try {
-				$stream = fopen($file, 'w');
-				$this->writeGendexFile($stream, $data);
+				// To avoid timeout/diskspace/etc, write to a temporary file first
+				$stream = fopen($file . '.tmp', 'w');
+				$this->writeGendexFile($file, $stream);
 				echo FlashMessages::addMessage(I18N::translate('The GENDEX file has been updated.'), 'success');
 			} catch (\ErrorException $ex) {
 				echo FlashMessages::addMessage(I18N::translate('Writing to the GENDEX file failed. Be sure you have set the right file permissions (644).') . '<hr><samp dir="ltr">' . $ex->getMessage() . '</samp>', 'danger');
 			}
 		} else {
+			// make our GENDEX text file if it does not exist.
 			try {
-				$stream = fopen($file, 'w');
-				$this->writeGendexFile($stream, $data);
+				$stream = fopen($file . '.tmp', 'w');
+				$this->writeGendexFile($file, $stream);
 				chmod($file, 0644);
 				echo FlashMessages::addMessage(I18N::translate('The GENDEX file has been created.'), 'success');
 			} catch (\ErrorException $ex) {
 				echo FlashMessages::addMessage(I18N::translate('The GENDEX file can not be created automatically. Try to manually create an empty text file in the root of your webtrees installation, called “gendex.txt”. Set the file permissions to 644.') . '<hr><samp dir="ltr">' . $ex->getMessage() . '</samp>', 'danger');
-
 			}
 		}
 	}
@@ -80,18 +73,6 @@ class FancyGendexClass extends FancyGendexModule {
 			);
 		}
 		return $list;
-	}
-
-	private function getGendexContent($tree, $indis) {
-		$content = '';
-		foreach ($indis as $indi) {
-			$xref = $indi['ID'];
-			$record = Individual::getInstance($xref, $tree);
-			if ($record && $record->canShowName(Auth::PRIV_PRIVATE)) {
-				$content.=$record->getXref() . '&ged=' . $tree->getName() . '|' . $indi['SURNAME'] . '|' . $indi['GIVN'] . ' /' . $indi['SURNAME'] . '/|' . $this->printDate(array('BIRT', 'BAPM', 'CHR'), $xref, $tree) . '|' . $record->getBirthPlace() . '|' . $this->printDate(array('DEAT', 'BURI'), $xref, $tree) . '|' . $record->getDeathPlace() . '|' . PHP_EOL;
-			}
-		}
-		return $content;
 	}
 
 	private function printDate($facts, $xref, $tree) {
@@ -118,11 +99,40 @@ class FancyGendexClass extends FancyGendexModule {
 		}
 	}
 
-	private function writeGendexFile($stream, $data) {
+	private function writeGendexChunks($tree, $stream) {
+		$buffer = '';
+		$indis = $this->getAllNames($tree->getTreeId());
+		foreach ($indis as $indi) {
+			$xref = $indi['ID'];
+			$record = Individual::getInstance($xref, $tree);
+			if ($record && $record->canShowName(Auth::PRIV_PRIVATE)) {
+				$buffer .= $record->getXref() . '&ged=' . $tree->getName() . '|' . $indi['SURNAME'] . '|' . $indi['GIVN'] . ' /' . $indi['SURNAME'] . '/|' . $this->printDate(array('BIRT', 'BAPM', 'CHR'), $xref, $tree) . '|' . $record->getBirthPlace() . '|' . $this->printDate(array('DEAT', 'BURI'), $xref, $tree) . '|' . $record->getDeathPlace() . '|' . PHP_EOL;
+				if (strlen($buffer) > 65535) {
+					fwrite($stream, $buffer);
+					$buffer = '';
+				}
+			}
+		}
+		return $buffer;
+	}
+
+	private function writeGendexContent($stream) {
+		foreach (Tree::getAll() as $tree) {
+			if ($tree->getPreference('FANCY_GENDEX')) {
+				$buffer = $this->writeGendexChunks($tree, $stream);
+				fwrite($stream, $buffer);
+			}
+		}
+	}
+
+	private function writeGendexFile($file, $stream) {
+		$comment = ';;Generated with ' . WT_WEBTREES . ' ' . WT_VERSION . ' on ' . strip_tags(FunctionsDate::formatTimestamp(WT_TIMESTAMP + WT_TIMESTAMP_OFFSET)) . PHP_EOL;
 		#UTF-8 - Add byte order mark
 		fwrite($stream, pack('CCC', 0xef, 0xbb, 0xbf));
-		fwrite($stream, $data);
+		fwrite($stream, $comment);
+		$this->writeGendexContent($stream);
 		fclose($stream);
+		rename($file . '.tmp', $file);
 	}
 
 }
