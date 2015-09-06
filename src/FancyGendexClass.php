@@ -43,20 +43,23 @@ class FancyGendexClass extends FancyGendexModule {
 		$file = WT_ROOT . 'gendex.txt';
 
 		// make our GENDEX text file if it does not exist.
-		if (!file_exists($file)) {
-			if (!$stream = fopen($file, 'w')) {
-				echo FlashMessages::addMessage(I18N::translate('The GENDEX file can not be created automatically. Try to manually create an empty text file in the root of your webtrees installation, called “gendex.txt”. Set the file permissions to 644.'), 'danger');
-			} else {
+		if (file_exists($file)) {
+			try {
+				$stream = fopen($file, 'w');
+				$this->writeGendexFile($stream, $data);
+				echo FlashMessages::addMessage(I18N::translate('The GENDEX file has been updated.'), 'success');
+			} catch (\ErrorException $ex) {
+				echo FlashMessages::addMessage(I18N::translate('Writing to the GENDEX file failed. Be sure you have set the right file permissions (644).') . '<hr><samp dir="ltr">' . $ex->getMessage() . '</samp>', 'danger');
+			}
+		} else {
+			try {
+				$stream = fopen($file, 'w');
 				$this->writeGendexFile($stream, $data);
 				chmod($file, 0644);
 				echo FlashMessages::addMessage(I18N::translate('The GENDEX file has been created.'), 'success');
-			}
-		} else {
-			if (!$stream = fopen($file, 'w')) {
-				echo FlashMessages::addMessage(I18N::translate('Writing to the GENDEX file failed. Be sure you have set the right file permissions (644).'), 'danger');
-			} else {
-				$this->writeGendexFile($stream, $data);
-				echo FlashMessages::addMessage(I18N::translate('The GENDEX file has been updated.'), 'success');
+			} catch (\ErrorException $ex) {
+				echo FlashMessages::addMessage(I18N::translate('The GENDEX file can not be created automatically. Try to manually create an empty text file in the root of your webtrees installation, called “gendex.txt”. Set the file permissions to 644.') . '<hr><samp dir="ltr">' . $ex->getMessage() . '</samp>', 'danger');
+
 			}
 		}
 	}
