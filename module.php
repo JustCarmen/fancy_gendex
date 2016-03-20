@@ -24,6 +24,8 @@ use Fisharebest\Webtrees\Module\ModuleConfigInterface;
 use Fisharebest\Webtrees\Tree;
 use JustCarmen\WebtreesAddOns\FancyGendex\Template\AdminTemplate;
 
+define('FG_VERSION', '1.7.4');
+
 class FancyGendexModule extends AbstractModule implements ModuleConfigInterface {
 
 	/** @var string location of the Fancy Gendex module files */
@@ -56,7 +58,7 @@ class FancyGendexModule extends AbstractModule implements ModuleConfigInterface 
 
 	// Extend Module
 	public function getDescription() {
-		return /* I18N: Description of the module */ I18N::translate('Generate GENDEX file for genealogical search engines.');
+		return /* I18N: Description of the module */ I18N::translate('Generate GENDEX file for genealogical search engines.') . '<br><span class="small text-muted">' . I18N::translate('Version') . ' ' . FG_VERSION . ' | by JustCarmen | <a href="http://www.justcarmen.nl/fancy-modules/fancy-gendex/">' . I18N::translate('Show details') . '</a></span>';
 	}
 
 	// Extend Module
