@@ -59,11 +59,11 @@ class FancyGendexClass extends FancyGendexModule {
 
 	// Get a list of all the individuals for the choosen gedcom
 	private function getAllNames($tree_id) {
-		$sql = "SELECT SQL_CACHE n_id, n_surname, n_givn FROM `##name` WHERE n_file = :tree_id AND n_type = 'NAME' ORDER BY n_sort ASC";
-		$args = array(
+		$sql	 = "SELECT SQL_CACHE n_id, n_surname, n_givn FROM `##name` WHERE n_file = :tree_id AND n_type = 'NAME' ORDER BY n_sort ASC";
+		$args	 = array(
 			'tree_id' => $tree_id
 		);
-		$filter = new Zend_Filter_StringToUpper(array('encoding' => 'UTF-8'));
+		$filter	 = new Zend_Filter_StringToUpper(array('encoding' => 'UTF-8'));
 
 		foreach (Database::prepare($sql)->execute($args)->fetchAll() as $row) {
 			$list[] = array(
@@ -90,21 +90,21 @@ class FancyGendexClass extends FancyGendexModule {
 					'tree_id'	 => $tree->getTreeId()))
 				->fetchOneRow();
 			if ($row) {
-				$day = $row->d_day > 0 ? $row->d_day . ' ' : '';
-				$month = !empty($row->d_month) ? $row->d_month . ' ' : '';
-				$year = $row->d_year > 0 ? $row->d_year : '';
-				$date = $day . $month . $year;
+				$day	 = $row->d_day > 0 ? $row->d_day . ' ' : '';
+				$month	 = !empty($row->d_month) ? $row->d_month . ' ' : '';
+				$year	 = $row->d_year > 0 ? $row->d_year : '';
+				$date	 = $day . $month . $year;
 				return $date;
 			}
 		}
 	}
 
 	private function writeGendexChunks($tree, $stream) {
-		$buffer = '';
-		$indis = $this->getAllNames($tree->getTreeId());
+		$buffer	 = '';
+		$indis	 = $this->getAllNames($tree->getTreeId());
 		foreach ($indis as $indi) {
-			$xref = $indi['ID'];
-			$record = Individual::getInstance($xref, $tree);
+			$xref	 = $indi['ID'];
+			$record	 = Individual::getInstance($xref, $tree);
 			if ($record && $record->canShowName(Auth::PRIV_PRIVATE)) {
 				$buffer .= $record->getXref() . '&ged=' . $tree->getName() . '|' . $indi['SURNAME'] . '|' . $indi['GIVN'] . ' /' . $indi['SURNAME'] . '/|' . $this->printDate(array('BIRT', 'BAPM', 'CHR'), $xref, $tree) . '|' . $record->getBirthPlace() . '|' . $this->printDate(array('DEAT', 'BURI'), $xref, $tree) . '|' . $record->getDeathPlace() . '|' . PHP_EOL;
 				if (strlen($buffer) > 65535) {
