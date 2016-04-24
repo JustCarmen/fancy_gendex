@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Fancy Gendex\n"
 "POT-Creation-Date: 2016-03-20 22:25+0100\n"
-"PO-Revision-Date: 2016-04-24 18:43+0000\n"
+"PO-Revision-Date: 2016-04-24 19:54+0000\n"
 "Last-Translator: Martin Pannier <der@bauschaffen.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/justcarmen/fancy-gendex/de/>\n"
 "Language: de\n"
@@ -44,7 +44,7 @@ msgstr "Erstellt eine GENDEX-Datei für genealogische Suchmaschinen."
 
 #: src/Template/AdminTemplate.php:103
 msgid "Note: the GENDEX text file is not automatically updated. If you have made changes to your tree you need to update the GENDEX text file manually by clicking on the button. You do <b>not</b> need to update your subscription at the genealogical search engine."
-msgstr "Beachten Sie: Die GENDEX-Datei wird nicht automatisch aktualisiert. Wenn Sie Änderungen in Ihrem Stammbaum gemacht haben, müssen Sie die GENDEX-Datei selbst durch Anklicken des Buttons neu erstellen. Ihre Eintragung bei den genealogischen Suchmaschinen müssen Sie <b>nicht</b> aktualisieren."
+msgstr "Hinweis: Die GENDEX-Datei wird nicht automatisch aktualisiert. Wenn Sie Änderungen in Ihrem Stammbaum gemacht haben, müssen Sie die GENDEX-Datei selbst durch Anklicken des Buttons neu erstellen. Ihre Eintragung bei den genealogischen Suchmaschinen brauchen Sie <b>nicht</b> zu aktualisieren."
 
 #: src/FancyGendexClass.php:55
 msgid "The GENDEX file can not be created automatically. Try to manually create an empty text file in the root of your webtrees installation, called “gendex.txt”. Set the file permissions to 644."
@@ -80,7 +80,7 @@ msgstr "Das Schreiben der GENDEX-Datei ist fehlgeschlagen. Bitte prüfen Sie, ob
 
 #: src/Template/AdminTemplate.php:102
 msgid "You need this url (without the quotes) as general url to the individual pages when submitting to Stamboomzoeker or Familytreeseeker:"
-msgstr "Sie benötigen diese Link (ohne Anführungszeichen) als allgemeinen Link zu den Personenseiten bei Übertragung an Stamboomzoeker oder Familytreeseeker:"
+msgstr "Sie benötigen die folgende Internetadresse (ohne Anführungszeichen) als allgemeinen Link zu den Personenseiten bei Übertragung an Stamboomzoeker oder Familytreeseeker:"
 
 #: src/Template/AdminTemplate.php:76
 msgid "create GENDEX text file"
