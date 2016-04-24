@@ -2,16 +2,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Fancy Gendex\n"
 "POT-Creation-Date: 2016-03-20 22:25+0100\n"
-"PO-Revision-Date: 2015-07-04 14:06+0200\n"
+"PO-Revision-Date: 2016-04-24 05:16+0000\n"
 "Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
-"Language-Team: \n"
+"Language-Team: Dutch <https://translate.webtrees.net/projects/justcarmen/fancy-gendex/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.2\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2.5\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #: src/Template/AdminTemplate.php:50
@@ -62,7 +62,7 @@ msgstr "Het GENDEX bestand bevat alleen openbare gegevens."
 
 #: src/Template/AdminTemplate.php:90
 msgid "The search engines below are known to accept the GENDEX textfile created by this module:"
-msgstr "De zoekmachines hieronder accepteren het GENDEX bestand dat met deze module is gemaakt."
+msgstr "De zoekmachines hieronder accepteren het GENDEX bestand dat met deze module is gemaakt:"
 
 #: src/Template/AdminTemplate.php:89
 msgid "To tell search engines that a GENDEX file is available, you should submit the url above to the genealogical search engine of your choice."
@@ -78,7 +78,7 @@ msgstr "Het schrijven naar het GENDEX bestand is mislukt. Controleer of u de jui
 
 #: src/Template/AdminTemplate.php:102
 msgid "You need this url (without the quotes) as general url to the individual pages when submitting to Stamboomzoeker or Familytreeseeker:"
-msgstr "U heeft deze url nodig (zonder aanhalingstekens) als algemene url naar de individuele pagina's wanneer u uw bestand indient bij Stamboomzoeker of Familytreeseeker."
+msgstr "U heeft deze url nodig (zonder aanhalingstekens) als algemene url naar de individuele pagina's wanneer u uw bestand indient bij Stamboomzoeker of Familytreeseeker:"
 
 #: src/Template/AdminTemplate.php:76
 msgid "create GENDEX text file"
