@@ -1,0 +1,91 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Fancy Gendex\n"
+"POT-Creation-Date: 2016-03-20 22:25+0100\n"
+"PO-Revision-Date: 2015-07-04 14:01+0200\n"
+"Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
+"Language-Team: \n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.7\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: src/Template/AdminTemplate.php:50
+msgid "A GENDEX file is an index of personal data and a short page URL. It is used to index a genealogical website by a genealogical search engine. The idea behind it is to join numerous pedigrees of individual genealogical researchers to a central database, while the individual genealogical researchers are still keeping  all control over their data. Unlike a GEDCOM file a GENDEX file contains no information about the family relationships between individuals. This means the file is useless without the corresponding website."
+msgstr ""
+
+#: src/Template/AdminTemplate.php:87
+msgid "Click on the link below to view your GENDEX file."
+msgstr ""
+
+#: src/Template/AdminTemplate.php:99
+msgid "Dutch"
+msgstr ""
+
+#: src/Template/AdminTemplate.php:93 src/Template/AdminTemplate.php:96
+msgid "English/International"
+msgstr ""
+
+#. I18N: Name of a module
+#: module.php:56
+msgid "Fancy Gendex"
+msgstr ""
+
+#. I18N: Description of the module
+#: module.php:61
+msgid "Generate GENDEX file for genealogical search engines."
+msgstr ""
+
+#: src/Template/AdminTemplate.php:103
+msgid "Note: the GENDEX text file is not automatically updated. If you have made changes to your tree you need to update the GENDEX text file manually by clicking on the button. You do <b>not</b> need to update your subscription at the genealogical search engine."
+msgstr ""
+
+#: src/FancyGendexClass.php:55
+msgid "The GENDEX file can not be created automatically. Try to manually create an empty text file in the root of your webtrees installation, called “gendex.txt”. Set the file permissions to 644."
+msgstr ""
+
+#: src/FancyGendexClass.php:53
+msgid "The GENDEX file has been created."
+msgstr ""
+
+#: src/FancyGendexClass.php:43
+msgid "The GENDEX file has been updated."
+msgstr ""
+
+#: src/Template/AdminTemplate.php:51
+msgid "The GENDEX file will only contain public data."
+msgstr ""
+
+#: src/Template/AdminTemplate.php:90
+msgid "The search engines below are known to accept the GENDEX textfile created by this module:"
+msgstr ""
+
+#: src/Template/AdminTemplate.php:89
+msgid "To tell search engines that a GENDEX file is available, you should submit the url above to the genealogical search engine of your choice."
+msgstr ""
+
+#: src/Template/AdminTemplate.php:55
+msgid "Which family trees should be included in the GENDEX file?"
+msgstr ""
+
+#: src/FancyGendexClass.php:45
+msgid "Writing to the GENDEX file failed. Be sure you have set the right file permissions (644)."
+msgstr ""
+
+#: src/Template/AdminTemplate.php:102
+msgid "You need this url (without the quotes) as general url to the individual pages when submitting to Stamboomzoeker or Familytreeseeker:"
+msgstr ""
+
+#: src/Template/AdminTemplate.php:76
+msgid "create GENDEX text file"
+msgstr ""
+
+#: src/Template/AdminTemplate.php:74
+msgid "update GENDEX text file"
+msgstr ""
