@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\Module\ModuleConfigInterface;
 use Fisharebest\Webtrees\Tree;
 use JustCarmen\WebtreesAddOns\FancyGendex\Template\AdminTemplate;
 
-define('FG_VERSION', '1.7.4');
+define('FG_VERSION', '1.7.5-dev');
 
 class FancyGendexModule extends AbstractModule implements ModuleConfigInterface {
 
@@ -38,7 +38,7 @@ class FancyGendexModule extends AbstractModule implements ModuleConfigInterface 
 
 		// register the namespaces
 		$loader = new ClassLoader();
-		$loader->addPsr4('JustCarmen\\WebtreesAddOns\\FancyGendex\\', $this->directory . '/src');
+		$loader->addPsr4('JustCarmen\\WebtreesAddOns\\FancyGendex\\', $this->directory . '/app');
 		$loader->register();
 	}
 
