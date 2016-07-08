@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Fancy Gendex\n"
-"POT-Creation-Date: 2016-03-20 22:25+0100\n"
+"POT-Creation-Date: 2016-07-08 09:30+0200\n"
 "PO-Revision-Date: 2016-04-14 20:48+0000\n"
 "Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
 "Language-Team: English (United Kingdom) <http://translate.webtrees.net/projects/justcarmen/fancy-gendex/en-GB/>\n"
@@ -16,76 +16,76 @@ msgstr ""
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: src/Template/AdminTemplate.php:50
+#: app/Template/AdminTemplate.php:50
 msgid "A GENDEX file is an index of personal data and a short page URL. It is used to index a genealogical website by a genealogical search engine. The idea behind it is to join numerous pedigrees of individual genealogical researchers to a central database, while the individual genealogical researchers are still keeping  all control over their data. Unlike a GEDCOM file a GENDEX file contains no information about the family relationships between individuals. This means the file is useless without the corresponding website."
 msgstr "A GENDEX file is an index of personal data and a short page URL. It is used to index a genealogical website by a genealogical search engine. The idea behind it is to join numerous pedigrees of individual genealogical researchers to a central database, while the individual genealogical researchers are still keeping all control over their data. Unlike a GEDCOM file a GENDEX file contains no information about the family relationships between individuals. This means the file is useless without the corresponding website."
 
-#: src/Template/AdminTemplate.php:87
+#: app/Template/AdminTemplate.php:87
 msgid "Click on the link below to view your GENDEX file."
 msgstr "Click on the link below to view your GENDEX file."
 
-#: src/Template/AdminTemplate.php:99
+#: app/Template/AdminTemplate.php:99
 msgid "Dutch"
 msgstr "Dutch"
 
-#: src/Template/AdminTemplate.php:93 src/Template/AdminTemplate.php:96
+#: app/Template/AdminTemplate.php:93 app/Template/AdminTemplate.php:96
 msgid "English/International"
 msgstr "English/International"
 
 #. I18N: Name of a module
-#: module.php:56
+#: module.php:57
 msgid "Fancy Gendex"
 msgstr "Fancy Gendex"
 
 #. I18N: Description of the module
-#: module.php:61
+#: module.php:62
 msgid "Generate GENDEX file for genealogical search engines."
 msgstr "Generate GENDEX file for genealogical search engines."
 
-#: src/Template/AdminTemplate.php:103
+#: app/Template/AdminTemplate.php:103
 msgid "Note: the GENDEX text file is not automatically updated. If you have made changes to your tree you need to update the GENDEX text file manually by clicking on the button. You do <b>not</b> need to update your subscription at the genealogical search engine."
 msgstr "Note: the GENDEX text file is not automatically updated. If you have made changes to your tree you need to update the GENDEX text file manually by clicking on the button. You do <b>not</b> need to update your subscription at the genealogical search engine."
 
-#: src/FancyGendexClass.php:55
+#: app/FancyGendexClass.php:55
 msgid "The GENDEX file can not be created automatically. Try to manually create an empty text file in the root of your webtrees installation, called “gendex.txt”. Set the file permissions to 644."
 msgstr "The GENDEX file can not be created automatically. Try to manually create an empty text file in the root of your webtrees installation, called ‘gendex.txt’. Set the file permissions to 644."
 
-#: src/FancyGendexClass.php:53
+#: app/FancyGendexClass.php:53
 msgid "The GENDEX file has been created."
 msgstr "The GENDEX file has been created."
 
-#: src/FancyGendexClass.php:43
+#: app/FancyGendexClass.php:43
 msgid "The GENDEX file has been updated."
 msgstr "The GENDEX file has been updated."
 
-#: src/Template/AdminTemplate.php:51
+#: app/Template/AdminTemplate.php:51
 msgid "The GENDEX file will only contain public data."
 msgstr "The GENDEX file will only contain public data."
 
-#: src/Template/AdminTemplate.php:90
+#: app/Template/AdminTemplate.php:90
 msgid "The search engines below are known to accept the GENDEX textfile created by this module:"
 msgstr "The search engines below are known to accept the GENDEX textfile created by this module:"
 
-#: src/Template/AdminTemplate.php:89
+#: app/Template/AdminTemplate.php:89
 msgid "To tell search engines that a GENDEX file is available, you should submit the url above to the genealogical search engine of your choice."
 msgstr "To tell search engines that a GENDEX file is available, you should submit the url above to the genealogical search engine of your choice."
 
-#: src/Template/AdminTemplate.php:55
+#: app/Template/AdminTemplate.php:55
 msgid "Which family trees should be included in the GENDEX file?"
 msgstr "Which family trees should be included in the GENDEX file?"
 
-#: src/FancyGendexClass.php:45
+#: app/FancyGendexClass.php:45
 msgid "Writing to the GENDEX file failed. Be sure you have set the right file permissions (644)."
 msgstr "Writing to the GENDEX file failed. Be sure you have set the right file permissions (644)."
 
-#: src/Template/AdminTemplate.php:102
+#: app/Template/AdminTemplate.php:102
 msgid "You need this url (without the quotes) as general url to the individual pages when submitting to Stamboomzoeker or Familytreeseeker:"
 msgstr "You need this url (without the quotes) as general url to the individual pages when submitting to Stamboomzoeker or Familytreeseeker:"
 
-#: src/Template/AdminTemplate.php:76
+#: app/Template/AdminTemplate.php:76
 msgid "create GENDEX text file"
 msgstr "create GENDEX text file"
 
-#: src/Template/AdminTemplate.php:74
+#: app/Template/AdminTemplate.php:74
 msgid "update GENDEX text file"
 msgstr "update GENDEX text file"
