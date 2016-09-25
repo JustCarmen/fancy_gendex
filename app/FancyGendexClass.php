@@ -59,17 +59,16 @@ class FancyGendexClass extends FancyGendexModule {
 
 	// Get a list of all the individuals for the choosen gedcom
 	private function getAllNames($tree_id) {
-		$sql	 = "SELECT SQL_CACHE n_id, n_surname, n_givn FROM `##name` WHERE n_file = :tree_id AND n_type = 'NAME' ORDER BY n_sort ASC";
+		$sql	 = "SELECT SQL_CACHE n_id as id, UPPER(n_surname) as surname, n_givn as givn FROM `##name` WHERE n_file = :tree_id AND n_type = 'NAME' ORDER BY n_sort ASC";
 		$args	 = array(
 			'tree_id' => $tree_id
 		);
-		$filter	 = new Zend_Filter_StringToUpper(array('encoding' => 'UTF-8'));
 
 		foreach (Database::prepare($sql)->execute($args)->fetchAll() as $row) {
 			$list[] = array(
-				'ID'		 => $row->n_id,
-				'SURNAME'	 => $filter->filter($row->n_surname),
-				'GIVN'		 => $row->n_givn
+				'ID'		 => $row->id,
+				'SURNAME'	 => $row->surname,
+				'GIVN'		 => $row->givn
 			);
 		}
 		return $list;
@@ -126,7 +125,7 @@ class FancyGendexClass extends FancyGendexModule {
 	}
 
 	private function writeGendexFile($file, $stream) {
-		$comment = ';;Generated with ' . WT_WEBTREES . ' ' . WT_VERSION . ' on ' . strip_tags(FunctionsDate::formatTimestamp(WT_TIMESTAMP + WT_TIMESTAMP_OFFSET)) . PHP_EOL;
+		$comment = ';;Generated with ' . WT_WEBTREES . ' ' . WT_VERSION . ' on ' . strip_tags(FunctionsDate::formatTimestamp(WT_TIMESTAMP + WT_TIMESTAMP_OFFSET)) . '|' . PHP_EOL;
 		#UTF-8 - Add byte order mark
 		fwrite($stream, pack('CCC', 0xef, 0xbb, 0xbf));
 		fwrite($stream, $comment);
