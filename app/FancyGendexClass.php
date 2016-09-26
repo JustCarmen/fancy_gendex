@@ -23,7 +23,6 @@ use Fisharebest\Webtrees\Functions\FunctionsDate;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Tree;
-use Zend_Filter_StringToUpper;
 
 /**
  * Class Fancy Gendex
