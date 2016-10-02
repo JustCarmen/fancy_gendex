@@ -26,7 +26,7 @@ use JustCarmen\WebtreesAddOns\FancyGendex\Template\AdminTemplate;
 
 class FancyGendexModule extends AbstractModule implements ModuleConfigInterface {
 	
-	const CUSTOM_VERSION = '1.7.8';
+	const CUSTOM_VERSION = '1.7.9-dev';
 	const CUSTOM_WEBSITE = 'http://www.justcarmen.nl/fancy-modules/fancy-gendex/';
 
 	/** @var string location of the Fancy Gendex module files */
@@ -70,6 +70,8 @@ class FancyGendexModule extends AbstractModule implements ModuleConfigInterface 
 					foreach (Tree::getAll() as $tree) {
 						$tree->setPreference('FANCY_GENDEX', Filter::postBool('FG' . $tree->getTreeId()));
 					}
+					
+					$this->setSetting('FG_REPLACE_CHARS', Filter::postBool('FG_REPLACE_CHARS'));
 					$this->module()->createGendex();
 				}
 				$template = new AdminTemplate;

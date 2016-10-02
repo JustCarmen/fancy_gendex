@@ -69,6 +69,22 @@ class AdminTemplate extends FancyGendexClass {
 					</div>
 				<?php endforeach; ?>
 			</div>
+			<div class="form-group">
+				<div class="checkbox">
+					<label>
+						<input
+							type="checkbox"
+							name="FG_REPLACE_CHARS"
+							<?php if ($this->getSetting('FG_REPLACE_CHARS')): ?>
+								checked="checked"
+							<?php endif; ?>
+							>
+						<span><?php echo I18N::translate('Replace special characters in the GENDEX file') ?></span>
+						
+					</label>
+					<p class="small muted"><?php echo I18N::translate('Some GENDEX search engines do not display special characters properly. If you encounter any problems you might get better results by enabling this setting.') ?></p>
+				</div>			
+			</div>
 			<?php
 			if (file_exists(WT_ROOT . 'gendex.txt')) {
 				$button_text = I18N::translate('update GENDEX text file');
