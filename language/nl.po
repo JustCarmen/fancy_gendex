@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Fancy Gendex\n"
 "POT-Creation-Date: 2016-12-26 16:42+0100\n"
-"PO-Revision-Date: 2016-04-24 05:16+0000\n"
+"PO-Revision-Date: 2016-12-27 06:20+0000\n"
 "Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/justcarmen/fancy-gendex/nl/>\n"
 "Language: nl\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.5\n"
+"X-Generator: Weblate 2.8\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
@@ -46,11 +46,11 @@ msgstr "Let op: het GENDEX tekstbestand wordt niet automatisch bijgewerkt. Als u
 
 #: app/Template/AdminTemplate.php:82
 msgid "Replace special characters in the GENDEX file"
-msgstr ""
+msgstr "Vervang speciale tekens in het GENDEX bestand"
 
 #: app/Template/AdminTemplate.php:85
 msgid "Some GENDEX search engines do not display special characters properly. If you encounter any problems you might get better results by enabling this setting."
-msgstr ""
+msgstr "Sommige GENDEX zoekmachines tonen speciale tekens niet op de juiste manier. Als u tegen dit probleem aanloopt, krijgt u waarschijnlijk betere resultaten door deze optie in te schakelen."
 
 #: app/FancyGendexClass.php:54
 msgid "The GENDEX file can not be created automatically. Try to manually create an empty text file in the root of your webtrees installation, called “gendex.txt”. Set the file permissions to 644."
