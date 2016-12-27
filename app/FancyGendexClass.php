@@ -28,17 +28,24 @@ use Fisharebest\Webtrees\Tree;
  * Class Fancy Gendex
  */
 class FancyGendexClass extends FancyGendexModule {
+	
+	/** @var string filename */
+	private $file;
+	
+	/** @var string  filename of the temporary file */
+	private $tmpfile;
 
 	// The GENDEX file contains references to all none private individuals.
 	protected function createGendex() {
 		// create GENDEX text file
-		$file = WT_ROOT . 'gendex.txt';
-
-		if (file_exists($file)) {
+		$this->file = WT_ROOT . 'gendex.txt';
+		$this->tmpfile = WT_DATA_DIR . basename($this->file) . '.tmp';
+		
+		if (file_exists($this->file)) {
 			try {
 				// To avoid timeout/diskspace/etc, write to a temporary file first
-				$stream = fopen($file . '.tmp', 'w');
-				$this->writeGendexFile($file, $stream);
+				$stream = fopen($this->tmpfile, 'w');
+				$this->writeGendexFile($stream);
 				echo FlashMessages::addMessage(I18N::translate('The GENDEX file has been updated.'), 'success');
 			} catch (\ErrorException $ex) {
 				echo FlashMessages::addMessage(I18N::translate('Writing to the GENDEX file failed. Be sure you have set the right file permissions (644).') . '<hr><samp dir="ltr">' . $ex->getMessage() . '</samp>', 'danger');
@@ -46,9 +53,9 @@ class FancyGendexClass extends FancyGendexModule {
 		} else {
 			// make our GENDEX text file if it does not exist.
 			try {
-				$stream = fopen($file . '.tmp', 'w');
-				$this->writeGendexFile($file, $stream);
-				chmod($file, 0644);
+				$stream = fopen($this->tmpfile, 'w');
+				$this->writeGendexFile($stream);
+				chmod($this->file, 0644);
 				echo FlashMessages::addMessage(I18N::translate('The GENDEX file has been created.'), 'success');
 			} catch (\ErrorException $ex) {
 				echo FlashMessages::addMessage(I18N::translate('The GENDEX file can not be created automatically. Try to manually create an empty text file in the root of your webtrees installation, called “gendex.txt”. Set the file permissions to 644.') . '<hr><samp dir="ltr">' . $ex->getMessage() . '</samp>', 'danger');
@@ -179,14 +186,14 @@ class FancyGendexClass extends FancyGendexModule {
 		}
 	}
 
-	private function writeGendexFile($file, $stream) {
+	private function writeGendexFile($stream) {
 		$comment = ';;Generated with ' . WT_WEBTREES . ' ' . WT_VERSION . ' on ' . strip_tags(FunctionsDate::formatTimestamp(WT_TIMESTAMP + WT_TIMESTAMP_OFFSET)) . '|' . PHP_EOL;
 		#UTF-8 - Add byte order mark
 		fwrite($stream, pack('CCC', 0xef, 0xbb, 0xbf));
 		fwrite($stream, $comment);
 		$this->writeGendexContent($stream);
 		fclose($stream);
-		rename($file . '.tmp', $file);
+		rename($this->tmpfile, $this->file);
 	}
 
 }
