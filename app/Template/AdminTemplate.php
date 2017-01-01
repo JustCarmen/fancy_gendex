@@ -80,7 +80,7 @@ class AdminTemplate extends FancyGendexClass {
 							<?php endif; ?>
 							>
 						<span><?php echo I18N::translate('Replace special characters in the GENDEX file') ?></span>
-						
+
 					</label>
 					<p class="small muted"><?php echo I18N::translate('Some GENDEX search engines do not display special characters properly. If you encounter any problems you might get better results by enabling this setting.') ?></p>
 				</div>			

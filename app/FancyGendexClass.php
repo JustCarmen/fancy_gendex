@@ -28,19 +28,19 @@ use Fisharebest\Webtrees\Tree;
  * Class Fancy Gendex
  */
 class FancyGendexClass extends FancyGendexModule {
-	
+
 	/** @var string filename */
 	private $file;
-	
+
 	/** @var string  filename of the temporary file */
 	private $tmpfile;
 
 	// The GENDEX file contains references to all none private individuals.
 	protected function createGendex() {
 		// create GENDEX text file
-		$this->file = WT_ROOT . 'gendex.txt';
-		$this->tmpfile = WT_DATA_DIR . basename($this->file) . '.tmp';
-		
+		$this->file		 = WT_ROOT . 'gendex.txt';
+		$this->tmpfile	 = WT_DATA_DIR . basename($this->file) . '.tmp';
+
 		if (file_exists($this->file)) {
 			try {
 				// To avoid timeout/diskspace/etc, write to a temporary file first
@@ -130,12 +130,12 @@ class FancyGendexClass extends FancyGendexModule {
 				'ю' => 'yu', 'я' => 'ya'
 			];
 
-			return str_replace(array_keys($replace), $replace, $string); 
+			return str_replace(array_keys($replace), $replace, $string);
 		} else {
 			return $string;
 		}
 	}
-	
+
 	private function printDate($facts, $xref, $tree) {
 		foreach ($facts as $fact) {
 			$row = Database::prepare(
