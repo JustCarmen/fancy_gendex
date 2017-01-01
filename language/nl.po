@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Fancy Gendex\n"
-"POT-Creation-Date: 2016-12-26 16:42+0100\n"
+"POT-Creation-Date: 2017-01-01 16:40+0100\n"
 "PO-Revision-Date: 2016-12-27 06:20+0000\n"
 "Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/justcarmen/fancy-gendex/nl/>\n"
@@ -52,15 +52,15 @@ msgstr "Vervang speciale tekens in het GENDEX bestand"
 msgid "Some GENDEX search engines do not display special characters properly. If you encounter any problems you might get better results by enabling this setting."
 msgstr "Sommige GENDEX zoekmachines tonen speciale tekens niet op de juiste manier. Als u tegen dit probleem aanloopt, krijgt u waarschijnlijk betere resultaten door deze optie in te schakelen."
 
-#: app/FancyGendexClass.php:54
+#: app/FancyGendexClass.php:61
 msgid "The GENDEX file can not be created automatically. Try to manually create an empty text file in the root of your webtrees installation, called “gendex.txt”. Set the file permissions to 644."
 msgstr "Het GENDEX bestand kan niet automatisch worden aangemaakt. Probeer het bestand handmatig aan te maken door een leeg tekstbestand op te slaan in de root van uw webtrees installatie. Noem dit bestand \"gendex.txt\". Zet de toegangsrechten voor het bestand op 644."
 
-#: app/FancyGendexClass.php:52
+#: app/FancyGendexClass.php:59
 msgid "The GENDEX file has been created."
 msgstr "Het GENDEX bestand is aangemaakt."
 
-#: app/FancyGendexClass.php:42
+#: app/FancyGendexClass.php:49
 msgid "The GENDEX file has been updated."
 msgstr "Het GENDEX bestand is bijgewerkt."
 
@@ -80,7 +80,7 @@ msgstr "Om zoekmachines te laten weten dat een GENDEX bestand beschikbaar is, mo
 msgid "Which family trees should be included in the GENDEX file?"
 msgstr "Welke stambomen moeten in het GENDEX bestand worden opgenomen?"
 
-#: app/FancyGendexClass.php:44
+#: app/FancyGendexClass.php:51
 msgid "Writing to the GENDEX file failed. Be sure you have set the right file permissions (644)."
 msgstr "Het schrijven naar het GENDEX bestand is mislukt. Controleer of u de juiste toegangsrechten voor dit bestand heeft ingesteld (644)."
 

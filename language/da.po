@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Fancy Gendex\n"
-"POT-Creation-Date: 2016-12-26 16:42+0100\n"
+"POT-Creation-Date: 2017-01-01 16:40+0100\n"
 "PO-Revision-Date: 2016-10-03 19:25+0000\n"
 "Last-Translator: Patrick Kongshammer <patrickkongshammer@gmail.com>\n"
 "Language-Team: Danish <https://translate.webtrees.net/projects/justcarmen/fancy-gendex/da/>\n"
@@ -54,15 +54,15 @@ msgstr ""
 msgid "Some GENDEX search engines do not display special characters properly. If you encounter any problems you might get better results by enabling this setting."
 msgstr ""
 
-#: app/FancyGendexClass.php:54
+#: app/FancyGendexClass.php:61
 msgid "The GENDEX file can not be created automatically. Try to manually create an empty text file in the root of your webtrees installation, called “gendex.txt”. Set the file permissions to 644."
 msgstr "GENDEX-filen kan ikke oprettes automatisk. Prøv at oprette en tom tekstfil med navnet \"gendex.txt\" manuelt i roden af din webtrees-installation. Sæt filtilladelserne til 644."
 
-#: app/FancyGendexClass.php:52
+#: app/FancyGendexClass.php:59
 msgid "The GENDEX file has been created."
 msgstr "GENDEX-filen er blevet oprettet."
 
-#: app/FancyGendexClass.php:42
+#: app/FancyGendexClass.php:49
 msgid "The GENDEX file has been updated."
 msgstr "GENDEX-filen er blevet opdateret."
 
@@ -82,7 +82,7 @@ msgstr "For at gøre søgemaskiner opmærksom på din GENDEX-fil, bør du indsen
 msgid "Which family trees should be included in the GENDEX file?"
 msgstr "Hvilket stamtræ skal inkluderes i GENDEX-filen?"
 
-#: app/FancyGendexClass.php:44
+#: app/FancyGendexClass.php:51
 msgid "Writing to the GENDEX file failed. Be sure you have set the right file permissions (644)."
 msgstr "Skrivning til GENDEX-filen fejlede. Undersøg venligst at filen har de rette rettigheder (644)."
 
