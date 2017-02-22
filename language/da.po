@@ -2,15 +2,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Fancy Gendex\n"
 "POT-Creation-Date: 2017-01-01 16:40+0100\n"
-"PO-Revision-Date: 2016-10-03 19:25+0000\n"
-"Last-Translator: Patrick Kongshammer <patrickkongshammer@gmail.com>\n"
+"PO-Revision-Date: 2017-02-22 03:52+0000\n"
+"Last-Translator: Jamie Jaconelli <jamie@jaconelli.dk>\n"
 "Language-Team: Danish <https://translate.webtrees.net/projects/justcarmen/fancy-gendex/da/>\n"
 "Language: da\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.8\n"
+"X-Generator: Weblate 2.10\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
@@ -18,11 +18,11 @@ msgstr ""
 
 #: app/Template/AdminTemplate.php:50
 msgid "A GENDEX file is an index of personal data and a short page URL. It is used to index a genealogical website by a genealogical search engine. The idea behind it is to join numerous pedigrees of individual genealogical researchers to a central database, while the individual genealogical researchers are still keeping  all control over their data. Unlike a GEDCOM file a GENDEX file contains no information about the family relationships between individuals. This means the file is useless without the corresponding website."
-msgstr "En GENDEX-fil indeholder et indeks med personlig data og en URL-adresse. Den bliver brugt til at indeksere en slægtshistorisk hjemmeside i en slægtshistorisk søgemaskine. Idéen bag går ud på at sammenlægge flere stamtræer fra individuelle slægtsforskere i én samlet database, mens de enkelte forskere stadig har fuld kontrol over deres egen data. Til forskel fra en GEDCOM-fil indeholder GENDEX-filen ingen information om familiære forhold mellem individerne. Dette betyder at filen er ubrugelig uden den tilhørende hjemmeside."
+msgstr "En GENDEX-fil indeholder et indeks med personlig data og en URL-adresse. Den bliver brugt til at indeksere en slægtshistorisk hjemmeside i en slægtshistorisk søgemaskine. Idéen bag den, går ud på at sammenlægge flere stamtræer fra individuelle slægtsforskere i én samlet database, mens de enkelte forskere stadig har fuld kontrol over deres egen data. Til forskel fra en GEDCOM-fil indeholder GENDEX-filen ingen information om familiære forhold mellem individerne. Dette betyder at filen er ubrugelig uden den tilhørende hjemmeside."
 
 #: app/Template/AdminTemplate.php:103
 msgid "Click on the link below to view your GENDEX file."
-msgstr "Klik på genvejen herunder for at se din GENDEX-fil."
+msgstr "Klik på linket herunder for at se din GENDEX-fil."
 
 #: app/Template/AdminTemplate.php:115
 msgid "Dutch"
@@ -35,7 +35,7 @@ msgstr "Engelsk/International"
 #. I18N: Name of a module
 #: module.php:57
 msgid "Fancy Gendex"
-msgstr "Fancy Gendex"
+msgstr "Fancy Gendexfil"
 
 #. I18N: Description of the module
 #: module.php:62
@@ -44,15 +44,15 @@ msgstr "Generér en GENDEX-file for slægtshistoriske søgemaskiner."
 
 #: app/Template/AdminTemplate.php:119
 msgid "Note: the GENDEX text file is not automatically updated. If you have made changes to your tree you need to update the GENDEX text file manually by clicking on the button. You do <b>not</b> need to update your subscription at the genealogical search engine."
-msgstr "Bemærk: GENDEX-filen bliver ikke automatisk opdateret. Hvis du har foretaget ændringer i dit stamtræ skal du opdatere GENDEX-filen manuelt ved at klikke på knappen. Du skal <b>ikke</b> opdatere din tilknytning i den slægtshistoriske søgemaskine."
+msgstr "Bemærk: GENDEX-filen bliver ikke automatisk opdateret. Hvis du har foretaget ændringer i dit stamtræ, skal du opdatere GENDEX-filen manuelt ved at klikke på knappen. Du skal <b>ikke</b> opdatere din tilknytning i den slægtshistoriske søgemaskine."
 
 #: app/Template/AdminTemplate.php:82
 msgid "Replace special characters in the GENDEX file"
-msgstr ""
+msgstr "Erstat speciel tegn i GENDEX filen"
 
 #: app/Template/AdminTemplate.php:85
 msgid "Some GENDEX search engines do not display special characters properly. If you encounter any problems you might get better results by enabling this setting."
-msgstr ""
+msgstr "Nogle GENDEX søgemaskiner viser ikke specialtegn korrekt. Hvis du støder på problemer, kan du få bedre resultater ved at aktivere denne indstilling."
 
 #: app/FancyGendexClass.php:61
 msgid "The GENDEX file can not be created automatically. Try to manually create an empty text file in the root of your webtrees installation, called “gendex.txt”. Set the file permissions to 644."
