@@ -66,16 +66,16 @@ class FancyGendexClass extends FancyGendexModule {
 	// Get a list of all the individuals for the choosen gedcom
 	private function getAllNames($tree_id) {
 		$sql	 = "SELECT SQL_CACHE n_id as id, UPPER(n_surname) as surname, n_givn as givn FROM `##name` WHERE n_file = :tree_id AND n_type = 'NAME' ORDER BY n_sort ASC";
-		$args	 = array(
+		$args	 = [
 			'tree_id' => $tree_id
-		);
+		];
 
 		foreach (Database::prepare($sql)->execute($args)->fetchAll() as $row) {
-			$list[] = array(
+			$list[] = [
 				'ID'		 => $row->id,
 				'SURNAME'	 => $this->printChars($row->surname),
 				'GIVN'		 => $this->printChars($row->givn)
-			);
+			];
 		}
 		return $list;
 	}
@@ -145,10 +145,10 @@ class FancyGendexClass extends FancyGendexModule {
 					" AND d_file = :tree_id" .
 					" LIMIT 1"
 				)
-				->execute(array(
+				->execute([
 					'fact'		 => $fact,
 					'xref'		 => $xref,
-					'tree_id'	 => $tree->getTreeId()))
+					'tree_id'	 => $tree->getTreeId()])
 				->fetchOneRow();
 			if ($row) {
 				$day	 = $row->d_day > 0 ? $row->d_day . ' ' : '';
@@ -167,7 +167,7 @@ class FancyGendexClass extends FancyGendexModule {
 			$xref	 = $indi['ID'];
 			$record	 = Individual::getInstance($xref, $tree);
 			if ($record && $record->canShowName(Auth::PRIV_PRIVATE)) {
-				$buffer .= $record->getXref() . '&ged=' . $tree->getName() . '|' . $indi['SURNAME'] . '|' . $indi['GIVN'] . ' /' . $indi['SURNAME'] . '/|' . $this->printDate(array('BIRT', 'BAPM', 'CHR'), $xref, $tree) . '|' . $this->printChars($record->getBirthPlace()) . '|' . $this->printDate(array('DEAT', 'BURI'), $xref, $tree) . '|' . $this->printChars($record->getDeathPlace()) . '|' . PHP_EOL;
+				$buffer .= $record->getXref() . '&ged=' . $tree->getName() . '|' . $indi['SURNAME'] . '|' . $indi['GIVN'] . ' /' . $indi['SURNAME'] . '/|' . $this->printDate(['BIRT', 'BAPM', 'CHR'], $xref, $tree) . '|' . $this->printChars($record->getBirthPlace()) . '|' . $this->printDate(['DEAT', 'BURI'], $xref, $tree) . '|' . $this->printChars($record->getDeathPlace()) . '|' . PHP_EOL;
 				if (strlen($buffer) > 65535) {
 					fwrite($stream, $buffer);
 					$buffer = '';
