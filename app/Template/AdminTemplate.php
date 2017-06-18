@@ -17,6 +17,7 @@
 namespace JustCarmen\WebtreesAddOns\FancyGendex\Template;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Bootstrap4;
 use Fisharebest\Webtrees\Controller\PageController;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\I18N;
@@ -40,13 +41,12 @@ class AdminTemplate extends FancyGendexClass {
 	}
 
 	private function pageBody(PageController $controller) {
+		echo Bootstrap4::breadcrumbs([
+			'admin.php'			 => I18N::translate('Control panel'),
+			'admin_modules.php'	 => I18N::translate('Module administration'),
+			], $controller->getPageTitle());
 		?>
-		<ol class="breadcrumb small">
-			<li><a href="admin.php"><?= I18N::translate('Control panel') ?></a></li>
-			<li><a href="admin_modules.php"><?= I18N::translate('Module administration') ?></a></li>
-			<li class="active"><?= $controller->getPageTitle() ?></li>
-		</ol>
-		<h2><?= $controller->getPageTitle() ?></h2>
+		<h1><?= $controller->getPageTitle() ?></h1>
 		<p><?= I18N::translate('A GENDEX file is an index of personal data and a short page URL. It is used to index a genealogical website by a genealogical search engine. The idea behind it is to join numerous pedigrees of individual genealogical researchers to a central database, while the individual genealogical researchers are still keeping  all control over their data. Unlike a GEDCOM file a GENDEX file contains no information about the family relationships between individuals. This means the file is useless without the corresponding website.') ?></p>
 		<p><?= I18N::translate('The GENDEX file will only contain public data.') ?></p>
 		<hr style="border-color:#ccc">
@@ -54,36 +54,15 @@ class AdminTemplate extends FancyGendexClass {
 			<input type="hidden" name="action" value="save"><?= Filter::getCsrf() ?>
 			<h4><?= I18N::translate('Which family trees should be included in the GENDEX file?') ?></h4>
 			<div class="form-group">
-				<?php foreach (Tree::getAll() as $tree): ?>
-					<div class="checkbox">
-						<label>
-							<input
-								type="checkbox"
-								name="FG<?= $tree->getTreeId() ?>"
-								<?php if ($tree->getPreference('FANCY_GENDEX')): ?>
-									checked="checked"
-								<?php endif; ?>
-								>
-								<?= $tree->getTitleHtml() ?>
-						</label>
-					</div>
-				<?php endforeach; ?>
+				<?php
+				foreach (Tree::getAll() as $tree) {
+					echo Bootstrap4::checkbox($tree->getTitle(), false, ['name' => 'FG' . $tree->getTreeId(), 'checked' => $tree->getPreference('FANCY_GENDEX')]);
+				}
+				?>
 			</div>
 			<div class="form-group">
-				<div class="checkbox">
-					<label>
-						<input
-							type="checkbox"
-							name="FG_REPLACE_CHARS"
-							<?php if ($this->getSetting('FG_REPLACE_CHARS')): ?>
-								checked="checked"
-							<?php endif; ?>
-							>
-						<span><?= I18N::translate('Replace special characters in the GENDEX file') ?></span>
-
-					</label>
-					<p class="small muted"><?= I18N::translate('Some GENDEX search engines do not display special characters properly. If you encounter any problems you might get better results by enabling this setting.') ?></p>
-				</div>			
+				<?= Bootstrap4::checkbox(I18N::translate('Replace special characters in the GENDEX file'), false, ['name' => 'FG_REPLACE_CHARS', 'checked' => $this->getPreference('FG_REPLACE_CHARS')]) ?>
+				<p class="small muted"><?= I18N::translate('Some GENDEX search engines do not display special characters properly. If you encounter any problems you might get better results by enabling this setting.') ?></p>
 			</div>
 			<?php
 			if (file_exists(WT_ROOT . 'gendex.txt')) {
