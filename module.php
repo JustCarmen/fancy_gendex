@@ -70,7 +70,7 @@ class FancyGendexModule extends AbstractModule implements ModuleConfigInterface 
 						$tree->setPreference('FANCY_GENDEX', Filter::postBool('FG' . $tree->getTreeId()));
 					}
 
-					$this->setSetting('FG_REPLACE_CHARS', Filter::postBool('FG_REPLACE_CHARS'));
+					$this->setPreference('FG_REPLACE_CHARS', Filter::postBool('FG_REPLACE_CHARS'));
 					$this->module()->createGendex();
 				}
 				$template = new AdminTemplate;

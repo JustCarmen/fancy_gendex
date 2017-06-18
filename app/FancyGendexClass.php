@@ -80,7 +80,7 @@ class FancyGendexClass extends FancyGendexModule {
 	}
 
 	private function printChars($string) {
-		if ($this->getSetting('FG_REPLACE_CHARS')) {
+		if ($this->getPreference('FG_REPLACE_CHARS')) {
 			$replace = [
 				'&lt;' => '', '&gt;' => '', '&#039;' => '', '&amp;' => '',
 				'&quot;' => '', 'À' => 'A', 'Á' => 'A', 'Â' => 'A', 'Ã' => 'A', 'Ä' => 'Ae',
