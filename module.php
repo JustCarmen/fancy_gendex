@@ -25,7 +25,7 @@ use JustCarmen\WebtreesAddOns\FancyGendex\Template\AdminTemplate;
 
 class FancyGendexModule extends AbstractModule implements ModuleConfigInterface {
 
-  const CUSTOM_VERSION = '1.8.0-dev';
+  const CUSTOM_VERSION = '2.0.0-dev';
   const CUSTOM_WEBSITE = 'http://www.justcarmen.nl/fancy-modules/fancy-gendex/';
 
   /** @var string location of the Fancy Gendex module files */
