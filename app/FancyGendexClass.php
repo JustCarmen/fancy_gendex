@@ -167,7 +167,7 @@ class FancyGendexClass extends FancyGendexModule {
 			$xref   = $indi['ID'];
 			$record = Individual::getInstance($xref, $tree);
 			if ($record && $record->canShowName(Auth::PRIV_PRIVATE)) {
-				$buffer .= $record->getXref() . '&ged=' . $tree->getName() . '|' . $indi['SURNAME'] . '|' . $indi['GIVN'] . ' /' . $indi['SURNAME'] . '/|' . $this->printDate(['BIRT', 'BAPM', 'CHR'], $xref, $tree) . '|' . $this->printChars($record->getBirthPlace()) . '|' . $this->printDate(['DEAT', 'BURI'], $xref, $tree) . '|' . $this->printChars($record->getDeathPlace()) . '|' . PHP_EOL;
+				$buffer .= $record->getXref() . '&ged=' . $tree->getName() . '|' . $indi['SURNAME'] . '|' . $indi['GIVN'] . ' /' . $indi['SURNAME'] . '/|' . $this->printDate(['BIRT', 'BAPM', 'CHR'], $xref, $tree) . '|' . $this->printChars($record->getBirthPlace()->getGedcomName()) . '|' . $this->printDate(['DEAT', 'BURI'], $xref, $tree) . '|' . $this->printChars($record->getDeathPlace()->getGedcomName()) . '|' . PHP_EOL;
 				if (strlen($buffer) > 65535) {
 					fwrite($stream, $buffer);
 					$buffer = '';
