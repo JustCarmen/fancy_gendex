@@ -24,27 +24,25 @@ use Fisharebest\Webtrees\Tree;
 use JustCarmen\WebtreesAddOns\FancyGendex\FancyGendexClass;
 
 class AdminTemplate extends FancyGendexClass {
+	protected function pageContent() {
+		$controller = new PageController;
+		return
+		$this->pageHeader($controller) .
+		$this->pageBody($controller);
+	}
 
-  protected function pageContent() {
-    $controller = new PageController;
-    return
-        $this->pageHeader($controller) .
-        $this->pageBody($controller);
-  }
+	private function pageHeader(PageController $controller) {
+		$controller
+		->restrictAccess(Auth::isAdmin())
+		->setPageTitle($this->getTitle())
+		->pageHeader();
+	}
 
-  private function pageHeader(PageController $controller) {
-    $controller
-        ->restrictAccess(Auth::isAdmin())
-        ->setPageTitle($this->getTitle())
-        ->pageHeader();
-  }
-
-  private function pageBody(PageController $controller) {
-    echo Bootstrap4::breadcrumbs([
-        'admin.php'         => I18N::translate('Control panel'),
-        'admin_modules.php' => I18N::translate('Module administration'),
-        ], $controller->getPageTitle());
-    ?>
+	private function pageBody(PageController $controller) {
+		echo Bootstrap4::breadcrumbs([
+		'admin.php'         => I18N::translate('Control panel'),
+		'admin_modules.php' => I18N::translate('Module administration'),
+		], $controller->getPageTitle()); ?>
     <h1><?= $controller->getPageTitle() ?></h1>
     <p><?= I18N::translate('A GENDEX file is an index of personal data and a short page URL. It is used to index a genealogical website by a genealogical search engine. The idea behind it is to join numerous pedigrees of individual genealogical researchers to a central database, while the individual genealogical researchers are still keeping  all control over their data. Unlike a GEDCOM file a GENDEX file contains no information about the family relationships between individuals. This means the file is useless without the corresponding website.') ?></p>
     <p><?= I18N::translate('The GENDEX file will only contain public data.') ?></p>
@@ -54,22 +52,20 @@ class AdminTemplate extends FancyGendexClass {
       <h4><?= I18N::translate('Which family trees should be included in the GENDEX file?') ?></h4>
       <div class="form-group">
         <?php
-        foreach (Tree::getAll() as $tree) {
-          echo Bootstrap4::checkbox($tree->getTitle(), false, ['name' => 'FG' . $tree->getTreeId(), 'checked' => $tree->getPreference('FANCY_GENDEX')]);
-        }
-        ?>
+		foreach (Tree::getAll() as $tree) {
+			echo Bootstrap4::checkbox($tree->getTitle(), false, ['name' => 'FG' . $tree->getTreeId(), 'checked' => $tree->getPreference('FANCY_GENDEX')]);
+		} ?>
       </div>
       <div class="form-group">
         <?= Bootstrap4::checkbox(I18N::translate('Replace special characters in the GENDEX file'), false, ['name' => 'FG_REPLACE_CHARS', 'checked' => $this->getPreference('FG_REPLACE_CHARS')]) ?>
         <p class="small muted"><?= I18N::translate('Some GENDEX search engines do not display special characters properly. If you encounter any problems you might get better results by enabling this setting.') ?></p>
       </div>
       <?php
-      if (file_exists(WT_ROOT . 'gendex.txt')) {
-        $button_text = I18N::translate('update GENDEX text file');
-      } else {
-        $button_text = I18N::translate('create GENDEX text file');
-      }
-      ?>
+	  if (file_exists(WT_ROOT . 'gendex.txt')) {
+	  	$button_text = I18N::translate('update GENDEX text file');
+	  } else {
+	  	$button_text = I18N::translate('create GENDEX text file');
+	  } ?>
       <button type="submit" class="btn btn-primary">
         <i class="fa fa-check"></i>
         <?= $button_text ?>
@@ -98,6 +94,5 @@ class AdminTemplate extends FancyGendexClass {
       <hr>
     <?php endif; ?>
     <?php
-  }
-
+	}
 }
