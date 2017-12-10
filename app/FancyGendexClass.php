@@ -39,7 +39,7 @@ class FancyGendexClass extends FancyGendexModule {
 	protected function createGendex() {
 		// create GENDEX text file
 		$this->file    = WT_ROOT . 'gendex.txt';
-		$this->tmpfile = WT_DATA_DIR . basename($this->file) . '.tmp';
+		$this->tmpfile = WT_DATA_DIR . 'tmp/' . basename($this->file) . '.tmp';
 
 		if (file_exists($this->file)) {
 			try {
