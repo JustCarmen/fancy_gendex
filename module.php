@@ -25,68 +25,66 @@ use Fisharebest\Webtrees\Tree;
 use JustCarmen\WebtreesAddOns\FancyGendex\Template\AdminTemplate;
 
 class FancyGendexModule extends AbstractModule implements ModuleConfigInterface {
+	const CUSTOM_VERSION = '2.0.0-dev';
+	const CUSTOM_WEBSITE = 'http://www.justcarmen.nl/fancy-modules/fancy-gendex/';
 
-  const CUSTOM_VERSION = '2.0.0-dev';
-  const CUSTOM_WEBSITE = 'http://www.justcarmen.nl/fancy-modules/fancy-gendex/';
+	/** @var string location of the Fancy Gendex module files */
+	public $directory;
 
-  /** @var string location of the Fancy Gendex module files */
-  var $directory;
+	public function __construct() {
+		parent::__construct('fancy_gendex');
 
-  public function __construct() {
-    parent::__construct('fancy_gendex');
+		$this->directory = WT_MODULES_DIR . $this->getName();
 
-    $this->directory = WT_MODULES_DIR . $this->getName();
+		// register the namespaces
+		$loader = new ClassLoader();
+		$loader->addPsr4('JustCarmen\\WebtreesAddOns\\FancyGendex\\', $this->directory . '/app');
+		$loader->register();
+	}
 
-    // register the namespaces
-    $loader = new ClassLoader();
-    $loader->addPsr4('JustCarmen\\WebtreesAddOns\\FancyGendex\\', $this->directory . '/app');
-    $loader->register();
-  }
+	/**
+	 * Get the module class.
+	 *
+	 * Class functions are called with $this inside the source directory.
+	 */
+	private function module() {
+		return new FancyGendexClass;
+	}
 
-  /**
-   * Get the module class.
-   * 
-   * Class functions are called with $this inside the source directory.
-   */
-  private function module() {
-    return new FancyGendexClass;
-  }
+	// Extend Module
+	public function getTitle() {
+		return /* I18N: Name of a module */ I18N::translate('Fancy Gendex');
+	}
 
-  // Extend Module
-  public function getTitle() {
-    return /* I18N: Name of a module */ I18N::translate('Fancy Gendex');
-  }
+	// Extend Module
+	public function getDescription() {
+		return /* I18N: Description of the module */ I18N::translate('Generate GENDEX file for genealogical search engines.');
+	}
 
-  // Extend Module
-  public function getDescription() {
-    return /* I18N: Description of the module */ I18N::translate('Generate GENDEX file for genealogical search engines.');
-  }
+	// Extend Module
+	public function modAction($mod_action) {
+		switch ($mod_action) {
+	  case 'admin_config':
+		if (Filter::post('action') == 'save' && Filter::checkCsrf()) {
+			foreach (Tree::getAll() as $tree) {
+				$tree->setPreference('FANCY_GENDEX', Filter::postBool('FG' . $tree->getTreeId()));
+			}
 
-  // Extend Module
-  public function modAction($mod_action) {
-    switch ($mod_action) {
-      case 'admin_config':
-        if (Filter::post('action') == 'save' && Filter::checkCsrf()) {
-          foreach (Tree::getAll() as $tree) {
-            $tree->setPreference('FANCY_GENDEX', Filter::postBool('FG' . $tree->getTreeId()));
-          }
+			$this->setPreference('FG_REPLACE_CHARS', Filter::postBool('FG_REPLACE_CHARS'));
+			$this->module()->createGendex();
+		}
+		$template = new AdminTemplate;
+		return $template->pageContent();
+	  default:
+		http_response_code(404);
+		break;
+	}
+	}
 
-          $this->setPreference('FG_REPLACE_CHARS', Filter::postBool('FG_REPLACE_CHARS'));
-          $this->module()->createGendex();
-        }
-        $template = new AdminTemplate;
-        return $template->pageContent();
-      default:
-        http_response_code(404);
-        break;
-    }
-  }
-
-  // Implement ModuleConfigInterface
-  public function getConfigLink() {
-    return 'module.php?mod=' . $this->getName() . '&amp;mod_action=admin_config';
-  }
-
+	// Implement ModuleConfigInterface
+	public function getConfigLink() {
+		return 'module.php?mod=' . $this->getName() . '&amp;mod_action=admin_config';
+	}
 }
 
 return new FancyGendexModule;
