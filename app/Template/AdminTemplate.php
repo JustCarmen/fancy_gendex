@@ -41,11 +41,9 @@ class AdminTemplate extends FancyGendexClass {
 
 	private function pageBody(PageController $controller) {
 		echo Bootstrap4::breadcrumbs([
-			route('admin-control-panel')                                      => I18N::translate('Control panel'),
-			route('admin-modules')                                            => I18N::translate('Module administration'),
-			'module.php?mod=' . $this->getName() . '&mod_action=admin_config' => $this->getTitle(),
+			route('admin-control-panel') => I18N::translate('Control panel'),
+			route('admin-modules')       => I18N::translate('Module administration'),
 		], $controller->getPageTitle()); ?>
-
 		<h1><?= $controller->getPageTitle() ?></h1>
 		<p><?= I18N::translate('A GENDEX file is an index of personal data and a short page URL. It is used to index a genealogical website by a genealogical search engine. The idea behind it is to join numerous pedigrees of individual genealogical researchers to a central database, while the individual genealogical researchers are still keeping  all control over their data. Unlike a GEDCOM file a GENDEX file contains no information about the family relationships between individuals. This means the file is useless without the corresponding website.') ?></p>
 		<p><?= I18N::translate('The GENDEX file will only contain public data.') ?></p>
