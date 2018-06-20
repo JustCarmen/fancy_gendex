@@ -171,7 +171,23 @@ class FancyGendexClass extends FancyGendexModule {
 			$xref   = $indi['ID'];
 			$record = Individual::getInstance($xref, $tree);
 			if ($record && $record->canShowName(Auth::PRIV_PRIVATE)) {
-				$buffer .= $record->getXref() . '&ged=' . $tree->getName() . '|' . $indi['SURNAME'] . '|' . $indi['GIVN'] . ' /' . $indi['SURNAME'] . '/|' . $this->printDate(['BIRT', 'BAPM', 'CHR'], $xref, $tree) . '|' . $this->printChars($record->getBirthPlace()->getGedcomName()) . '|' . $this->printDate(['DEAT', 'BURI'], $xref, $tree) . '|' . $this->printChars($record->getDeathPlace()->getGedcomName()) . '|' . PHP_EOL;
+				$buffer .= $record->getXref() . '&ged=' . $tree->getName() . '|' . $indi['SURNAME'] . '|' . $indi['GIVN'] . ' /' . $indi['SURNAME'] . '/|' ;
+				if($this->getSetting('FG_SHOW_BIRTHDATE')) {
+					$buffer .= $this->printDate(array('BIRT', 'BAPM', 'CHR'), $xref, $tree) ;
+				}
+				$buffer .= '|';
+				if($this->getSetting('FG_SHOW_BIRTHPLACE')) {
+					$buffer .= $this->printChars($record->getBirthPlace());
+				}
+				$buffer .= '|';
+				if($this->getSetting('FG_SHOW_DEATHDATE')) {
+					$buffer .= $this->printDate(array('DEAT', 'BURI'), $xref, $tree);
+				}
+				$buffer .= '|';
+				if($this->getSetting('FG_SHOW_DEATHPLACE')) {
+					$buffer .=  $this->printChars($record->getDeathPlace());
+				}
+				$buffer .= '|' . PHP_EOL;
 				if (strlen($buffer) > 65535) {
 					fwrite($stream, $buffer);
 					$buffer = '';
