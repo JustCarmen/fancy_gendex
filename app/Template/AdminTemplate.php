@@ -60,120 +60,14 @@ class AdminTemplate extends FancyGendexClass {
 		  <div class="form-group">
 			<?= Bootstrap4::checkbox(I18N::translate('Replace special characters in the GENDEX file'), false, ['name' => 'FG_REPLACE_CHARS', 'checked' => (bool) $this->getPreference('FG_REPLACE_CHARS')]) ?>
 			<p class="small muted"><?= I18N::translate('Some GENDEX search engines do not display special characters properly. If you encounter any problems you might get better results by enabling this setting.') ?></p>
-				<h4><?php echo I18N::translate('To show more or less information in the search engines:') ?></h4>
-				<div class="checkbox">
-					<label>
-
-						<input
-
-							type="checkbox"
-
-							name="FG_SHOW_BIRTHDATE"
-
-							<?php if ($this->getSetting('FG_SHOW_BIRTHDATE')): ?>
-
-								checked="checked"
-
-							<?php endif; ?>
-
-							>
-
-						<span><?php echo I18N::translate('Show date of birth') ?></span>
-
-					</label>
-
-				</div>
-				<div class="checkbox">
-					<label>
-
-						<input
-
-							type="checkbox"
-
-							name="FG_SHOW_BIRTHPLACE"
-
-							<?php if ($this->getSetting('FG_SHOW_BIRTHPLACE')): ?>
-
-								checked="checked"
-
-							<?php endif; ?>
-
-							>
-
-						<span><?php echo I18N::translate('Show place of birth') ?></span>
-
-					</label>
-
-				</div>
-				<div class="checkbox">
-					<label>
-
-						<input
-
-							type="checkbox"
-
-							name="FG_SHOW_DEATHDATE"
-
-							<?php if ($this->getSetting('FG_SHOW_DEATHDATE')): ?>
-
-								checked="checked"
-
-							<?php endif; ?>
-
-							>
-
-						<span><?php echo I18N::translate('Show date of death') ?></span>
-
-					</label>
-
-				</div>
-				<div class="checkbox">
-					<label>
-
-						<input
-
-							type="checkbox"
-
-							name="FG_SHOW_DEATHPLACE"
-
-							<?php if ($this->getSetting('FG_SHOW_DEATHPLACE')): ?>
-
-								checked="checked"
-
-							<?php endif; ?>
-
-							>
-
-						<span><?php echo I18N::translate('Show place of death') ?></span>
-
-					</label>
-
-				</div>				
-				<div class="checkbox">
-
-					<label>
-
-						<input
-
-							type="checkbox"
-
-							name="FG_ONLY_YEARS"
-
-							<?php if ($this->getSetting('FG_ONLY_YEARS')): ?>
-
-								checked="checked"
-
-							<?php endif; ?>
-
-							>
-
-						<span><?php echo I18N::translate('Show dates (birth and death) in format YY (f.e. 1652) in stead of full date (f.e. 15 JAN 1652)') ?></span>
-
-
-
-					</label>
-				</div>
-			
+		</div>
+		<h4><?php echo I18N::translate('To show more or less information in the search engines:') ?></h4>
+		<div class="form-group">
+			<?= Bootstrap4::checkbox(I18N::translate('Show date of birth'), false, ['name' => 'FG_SHOW_BIRTHDATE', 'checked' => (bool) $this->getPreference('FG_SHOW_BIRTHDATE')]) ?>
+			<?= Bootstrap4::checkbox(I18N::translate('Show place of birth'), false, ['name' => 'FG_SHOW_BIRTHPLACE', 'checked' => (bool) $this->getPreference('FG_SHOW_BIRTHPLACE')]) ?>
+			<?= Bootstrap4::checkbox(I18N::translate('Show date of death'), false, ['name' => 'FG_SHOW_DEATHDATE', 'checked' => (bool) $this->getPreference('FG_SHOW_DEATHDATE')]) ?>
+			<?= Bootstrap4::checkbox(I18N::translate('Show place of death'), false, ['name' => 'FG_SHOW_DEATHPLACE', 'checked' => (bool) $this->getPreference('FG_SHOW_DEATHPLACE')]) ?>
+			<?= Bootstrap4::checkbox(I18N::translate('Show dates (birth and death) in format YY (f.e. 1652) in stead of full date (f.e. 15 JAN 1652)'), false, ['name' => 'FG_ONLY_YEARS', 'checked' => (bool) $this->getPreference('FG_ONLY_YEARS')]) ?>
 		</div>
 
 			
