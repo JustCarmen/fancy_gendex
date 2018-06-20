@@ -154,7 +154,11 @@ class FancyGendexClass extends FancyGendexModule {
 				$day   = $row->d_day > 0 ? $row->d_day . ' ' : '';
 				$month = !empty($row->d_month) ? $row->d_month . ' ' : '';
 				$year  = $row->d_year > 0 ? $row->d_year : '';
-				$date  = $day . $month . $year;
+				if ($this->getSetting('FG_ONLY_YEARS')){
+					$date = $year;
+				} else {
+					$date	 = $day . $month . $year;	
+				}
 				return $date;
 			}
 		}
