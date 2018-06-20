@@ -60,7 +60,123 @@ class AdminTemplate extends FancyGendexClass {
 		  <div class="form-group">
 			<?= Bootstrap4::checkbox(I18N::translate('Replace special characters in the GENDEX file'), false, ['name' => 'FG_REPLACE_CHARS', 'checked' => (bool) $this->getPreference('FG_REPLACE_CHARS')]) ?>
 			<p class="small muted"><?= I18N::translate('Some GENDEX search engines do not display special characters properly. If you encounter any problems you might get better results by enabling this setting.') ?></p>
-		  </div>
+				<h4><?php echo I18N::translate('To show more or less information in the search engines:') ?></h4>
+				<div class="checkbox">
+					<label>
+
+						<input
+
+							type="checkbox"
+
+							name="FG_SHOW_BIRTHDATE"
+
+							<?php if ($this->getSetting('FG_SHOW_BIRTHDATE')): ?>
+
+								checked="checked"
+
+							<?php endif; ?>
+
+							>
+
+						<span><?php echo I18N::translate('Show date of birth') ?></span>
+
+					</label>
+
+				</div>
+				<div class="checkbox">
+					<label>
+
+						<input
+
+							type="checkbox"
+
+							name="FG_SHOW_BIRTHPLACE"
+
+							<?php if ($this->getSetting('FG_SHOW_BIRTHPLACE')): ?>
+
+								checked="checked"
+
+							<?php endif; ?>
+
+							>
+
+						<span><?php echo I18N::translate('Show place of birth') ?></span>
+
+					</label>
+
+				</div>
+				<div class="checkbox">
+					<label>
+
+						<input
+
+							type="checkbox"
+
+							name="FG_SHOW_DEATHDATE"
+
+							<?php if ($this->getSetting('FG_SHOW_DEATHDATE')): ?>
+
+								checked="checked"
+
+							<?php endif; ?>
+
+							>
+
+						<span><?php echo I18N::translate('Show date of death') ?></span>
+
+					</label>
+
+				</div>
+				<div class="checkbox">
+					<label>
+
+						<input
+
+							type="checkbox"
+
+							name="FG_SHOW_DEATHPLACE"
+
+							<?php if ($this->getSetting('FG_SHOW_DEATHPLACE')): ?>
+
+								checked="checked"
+
+							<?php endif; ?>
+
+							>
+
+						<span><?php echo I18N::translate('Show place of death') ?></span>
+
+					</label>
+
+				</div>				
+				<div class="checkbox">
+
+					<label>
+
+						<input
+
+							type="checkbox"
+
+							name="FG_ONLY_YEARS"
+
+							<?php if ($this->getSetting('FG_ONLY_YEARS')): ?>
+
+								checked="checked"
+
+							<?php endif; ?>
+
+							>
+
+						<span><?php echo I18N::translate('Show dates (birth and death) in format YY (f.e. 1652) in stead of full date (f.e. 15 JAN 1652)') ?></span>
+
+
+
+					</label>
+				</div>
+			
+		</div>
+
+			
 		  <?php
 		  if (file_exists(WT_ROOT . 'gendex.txt')) {
 		  	$button_text = I18N::translate('update GENDEX text file');
