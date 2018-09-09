@@ -53,12 +53,12 @@ class FancyGendexModule extends AbstractModule implements ModuleConfigInterface 
 	}
 
 	// Extend Module
-	public function getTitle() {
+	public function getTitle(): string {
 		return /* I18N: Name of a module */ I18N::translate('Fancy Gendex');
 	}
 
 	// Extend Module
-	public function getDescription() {
+	public function getDescription(): string {
 		return /* I18N: Description of the module */ I18N::translate('Generate GENDEX file for genealogical search engines.');
 	}
 
@@ -83,7 +83,7 @@ class FancyGendexModule extends AbstractModule implements ModuleConfigInterface 
 	}
 
 	/** {@inheritdoc} */
-	public function getConfigLink() {
+	public function getConfigLink(): string {
 		return Html::url('module.php', [
 			'mod'        => $this->getName(),
 			'mod_action' => 'admin_config',
