@@ -72,6 +72,11 @@ class FancyGendexModule extends AbstractModule implements ModuleConfigInterface 
 			}
 
 			$this->setPreference('FG_REPLACE_CHARS', Filter::postBool('FG_REPLACE_CHARS'));
+			$this->setSetting('FG_SHOW_BIRTHDATE', Filter::postBool('FG_SHOW_BIRTHDATE'));					
+			$this->setSetting('FG_SHOW_BIRTHPLACE', Filter::postBool('FG_SHOW_BIRTHPLACE'));
+			$this->setSetting('FG_SHOW_DEATHDATE', Filter::postBool('FG_SHOW_DEATHDATE'));					
+			$this->setSetting('FG_SHOW_DEATHPLACE', Filter::postBool('FG_SHOW_DEATHPLACE'));
+			$this->setSetting('FG_ONLY_YEARS', Filter::postBool('FG_ONLY_YEARS'));			
 			$this->module()->createGendex();
 		}
 		$template = new AdminTemplate;
