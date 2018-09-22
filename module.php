@@ -1,8 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2017 webtrees development team
- * Copyright (C) 2017 JustCarmen
+ * Copyright (C) 2018 JustCarmen (http://www.justcarmen.nl)
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -26,7 +25,7 @@ use JustCarmen\WebtreesAddOns\FancyGendex\Template\AdminTemplate;
 
 class FancyGendexModule extends AbstractModule implements ModuleConfigInterface {
 
-	const CUSTOM_VERSION	 = '1.8.0-dev';
+	const CUSTOM_VERSION	 = '1.7.11';
 	const CUSTOM_WEBSITE	 = 'http://www.justcarmen.nl/fancy-modules/fancy-gendex/';
 
 	/** @var string location of the Fancy Gendex module files */
