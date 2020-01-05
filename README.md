@@ -1,8 +1,8 @@
 Fancy Gendex
 ====================
 
-[![Latest Release](https://img.shields.io/github/release/JustCarmen/fancy_gendex.svg)](https://github.com/JustCarmen/fancy_gendex/releases/latest)
-[![webtrees major version](https://img.shields.io/badge/webtrees-v1.x-green)](https://webtrees.github.io/download/)
+[![Latest Release](https://img.shields.io/github/release/JustCarmen/fancy_gendex.svg)][1]
+[![webtrees major version](https://img.shields.io/badge/webtrees-v1.x-green)][2]
 
 Fancy Gendex Module for webtrees. This is a webtrees 1 module. It cannot be used with webtrees 2.
 
@@ -13,15 +13,15 @@ A GENDEX file is an index of personal data and a short page URL. It is used to i
 __The GENDEX file only contains public data.__
 
 The search engines below are known to accept the GENDEX textfile created by this module:
-* [The Gendex Network (English/International)](http://www.gendexnetwork.org)
-* [Familytreeseeker (English/International)](http://www.familytreeseeker.com)
-* [Stamboomzoeker (Dutch)](http:/www.stamboomzoeker.nl)
+* [The Gendex Network (English/International)][7]
+* [Familytreeseeker (English/International)][8]
+* [Stamboomzoeker (Dutch)][9]
 
 On the Fancy Gendex configuration page select the trees you want to include and push the button to create your GENDEX file.
 
 Translations
 ------------
-You can help to translate this module. Updates to translations should be made at https://poeditor.com/join/project/HZFtiJlR8k. Changes made there will be pushed to this repository periodically and will be included in the next release of this module.
+You can help to translate this module. Updates to translations should be made at [the translation server][3]. Changes made there will be pushed to this repository periodically and will be included in the next release of this module.
 
 Installation & upgrading
 ------------------------
@@ -29,5 +29,14 @@ For more information about these subjects go to the JustCarmen help pages: http:
 
 Bugs and feature requests
 -------------------------
-If you experience any bugs or have a feature request for this module you can [create a new issue](https://github.com/JustCarmen/fancy_gendex/issues?state=open) or [use the webtrees subforum 'customising'](http://www.webtrees.net/index.php/en/forum/4-customising) to contact me.
+If you experience any bugs or have a feature request for this module you can [create a new issue on GitHub][5] or [use the webtrees subforum 'customising'][6] to contact me.
 
+ [1]: https://github.com/JustCarmen/fancy_gendex/releases/latest
+ [2]: https://webtrees.github.io/download/
+ [3]: https://poeditor.com/join/project/HZFtiJlR8k
+ [4]: http://www.justcarmen.nl/help-category/modules-help
+ [5]: https://github.com/JustCarmen/fancy_gendex/issues?state=open
+ [6]: http://www.webtrees.net/index.php/en/forum/4-customising
+ [7]: http://www.gendexnetwork.org
+ [8]: http://www.familytreeseeker.com
+ [9]: http:/www.stamboomzoeker.nl
