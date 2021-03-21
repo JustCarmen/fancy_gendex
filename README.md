@@ -1,6 +1,8 @@
 Fancy Gendex
 ====================
 
+THE DEVELOPMENT OF THIS MODULE HAS BEEN DISCONTINUED.
+
 Fancy Gendex Module for webtrees.
 
 This module requires [webtrees 1.7.11](https://github.com/fisharebest/webtrees). Download the latest stable release [here](https://github.com/JustCarmen/fancy_gendex/releases/latest).
