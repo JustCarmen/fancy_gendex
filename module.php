@@ -17,7 +17,6 @@ namespace JustCarmen\WebtreesAddOns\FancyGendex;
 
 use Composer\Autoload\ClassLoader;
 use Fisharebest\Webtrees\Filter;
-use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\AbstractModule;
 use Fisharebest\Webtrees\Module\ModuleConfigInterface;
@@ -25,11 +24,12 @@ use Fisharebest\Webtrees\Tree;
 use JustCarmen\WebtreesAddOns\FancyGendex\Template\AdminTemplate;
 
 class FancyGendexModule extends AbstractModule implements ModuleConfigInterface {
-	const CUSTOM_VERSION = '2.0.0-dev';
-	const CUSTOM_WEBSITE = 'http://www.justcarmen.nl/fancy-modules/fancy-gendex/';
+
+	const CUSTOM_VERSION	 = '1.7.11';
+	const CUSTOM_WEBSITE	 = 'http://www.justcarmen.nl/fancy-modules/fancy-gendex/';
 
 	/** @var string location of the Fancy Gendex module files */
-	public $directory;
+	var $directory;
 
 	public function __construct() {
 		parent::__construct('fancy_gendex');
@@ -44,7 +44,7 @@ class FancyGendexModule extends AbstractModule implements ModuleConfigInterface 
 
 	/**
 	 * Get the module class.
-	 *
+	 * 
 	 * Class functions are called with $this inside the source directory.
 	 */
 	private function module() {
@@ -52,42 +52,40 @@ class FancyGendexModule extends AbstractModule implements ModuleConfigInterface 
 	}
 
 	// Extend Module
-	public function getTitle(): string {
+	public function getTitle() {
 		return /* I18N: Name of a module */ I18N::translate('Fancy Gendex');
 	}
 
 	// Extend Module
-	public function getDescription(): string {
+	public function getDescription() {
 		return /* I18N: Description of the module */ I18N::translate('Generate GENDEX file for genealogical search engines.');
 	}
 
 	// Extend Module
 	public function modAction($mod_action) {
 		switch ($mod_action) {
-	  case 'admin_config':
-		if (Filter::post('action') == 'save' && Filter::checkCsrf()) {
-			foreach (Tree::getAll() as $tree) {
-				$tree->setPreference('FANCY_GENDEX', Filter::postBool('FG' . $tree->getTreeId()));
-			}
+			case 'admin_config':
+				if (Filter::post('action') == 'save' && Filter::checkCsrf()) {
+					foreach (Tree::getAll() as $tree) {
+						$tree->setPreference('FANCY_GENDEX', Filter::postBool('FG' . $tree->getTreeId()));
+					}
 
-			$this->setPreference('FG_REPLACE_CHARS', Filter::postBool('FG_REPLACE_CHARS'));
-			$this->module()->createGendex();
+					$this->setSetting('FG_REPLACE_CHARS', Filter::postBool('FG_REPLACE_CHARS'));
+					$this->module()->createGendex();
+				}
+				$template = new AdminTemplate;
+				return $template->pageContent();
+			default:
+				http_response_code(404);
+				break;
 		}
-		$template = new AdminTemplate;
-		return $template->pageContent();
-	  default:
-		http_response_code(404);
-		break;
-	}
 	}
 
-	/** {@inheritdoc} */
-	public function getConfigLink(): string {
-		return Html::url('module.php', [
-			'mod'        => $this->getName(),
-			'mod_action' => 'admin_config',
-		]);
+	// Implement ModuleConfigInterface
+	public function getConfigLink() {
+		return 'module.php?mod=' . $this->getName() . '&amp;mod_action=admin_config';
 	}
+
 }
 
 return new FancyGendexModule;
